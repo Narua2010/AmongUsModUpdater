@@ -39,9 +39,15 @@ if(Test-Path "./BepInEx"){
             Remove-Item "./BepInEx/plugins" -Recurse
         }
         if(Test-Path "./BepInEx/config"){
-            Remove-Item "./BepInEx/config/BepInEx.cfg" -Recurse
-            Remove-Item "./BepInEx/config/gg.reactor.api.cfg" -Recurse
-            Remove-Item "./BepInEx/config/me.eisbison.theotherroles.cfg" -Recurse
+            if(Test-Path "./BepInEx/config/BepInEx.cfg") {
+                Remove-Item "./BepInEx/config/BepInEx.cfg" -Recurse
+            }
+            if(Test-Path "./BepInEx/config/gg.reactor.api.cfg"){
+                Remove-Item "./BepInEx/config/gg.reactor.api.cfg" -Recurse
+            }
+            if(Test-Path "./BepInEx/config/me.eisbison.theotherroles.cfg"){
+                Remove-Item "./BepInEx/config/me.eisbison.theotherroles.cfg" -Recurse
+            }
         }
     } 
 }
