@@ -1,3 +1,5 @@
+![Among Us Mod Updater](Banner.png "Among Us Mod Updater")
+
 # Among Us Mod Updater
 This mod updater installs or updates [The Other Roles](https://github.com/Eisbison/TheOtherRoles).
 
