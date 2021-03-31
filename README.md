@@ -13,7 +13,7 @@ Note that most antivirus programs prevent the download or execution of the .exe.
 1. Download [AmongUsModUpdater.exe](https://github.com/Narua2010/AmongUsModUpdater/releases/download/v1.0.0/AmongUsModUpdater.exe).
 2. Find the folder of your game, for steams players you can right click in steam, on the game, a menu will appear proposing you to go to the folders.
 3. Make a copy of your game, it's not obligatory but advise, put it where you want.
-4. Copie the .exe into the game, at the .exe level.
+4. Copy the .exe into the game directory, at the .exe level.
 5. Run the AmongUsModUpdater.exe.
 
 **.cmd Download**
