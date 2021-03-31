@@ -1,5 +1,6 @@
 # Among Us Mod Updater
 This mod updater installs or updates [The Other Roles](https://github.com/Eisbison/TheOtherRoles).
+
 The **The Other Roles**, is a mod for Among Us which currently adds 20 additional roles to the Game.
 
 ## Installation
