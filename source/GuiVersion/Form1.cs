@@ -30,9 +30,7 @@ namespace AmongUsModUpdater
             InitializeComponent();
 
             getOtherRoles();
-            gettingInstallationPath();
-            downloadNewVersion();
-            deleteOldFiles();
+            
         }
 
        
@@ -49,6 +47,10 @@ namespace AmongUsModUpdater
                     releaseName = json.name;
                     releaseId = json.assets[0].id;
                 }
+
+                gettingInstallationPath();
+                downloadNewVersion();
+                deleteOldFiles();
             } 
             catch (Exception e)
             {
@@ -63,14 +65,15 @@ namespace AmongUsModUpdater
                 using (WebClient wc = new WebClient())
                 {
                     wc.DownloadProgressChanged += wc_DownloadProgressChanged;
+                    var pathToSave = path + "\\" + releaseName + ".zip";
                     wc.DownloadFileAsync(
                         new Uri(downloadUrl),
                         //Path to save
-                        path + "\\" + releaseName + ".zip"
+                        pathToSave
                     );
 
-                    FileAttributes attributes = File.GetAttributes(path + "\\" + releaseName + ".zip");
-                    File.SetAttributes(path + "\\" + releaseName + ".zip", File.GetAttributes(path + "\\" + releaseName + ".zip") | FileAttributes.Hidden);
+                    FileAttributes attributes = File.GetAttributes(pathToSave);
+                    File.SetAttributes(pathToSave, File.GetAttributes(pathToSave) | FileAttributes.Hidden);
                 }
             }
             catch (Exception e)
