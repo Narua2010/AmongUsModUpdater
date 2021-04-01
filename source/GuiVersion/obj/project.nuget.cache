@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "UG2tL2grUqydqvElJQwAz8Q6rCFdPK3xH5Pxyb2KUrZ7hM/m/N0OCnBMNxcTkdivXH5j7N+LJF2Ce2WFXa47Sw==",
+  "success": true,
+  "projectFilePath": "D:\\Github\\AmongUsModUpdater\\source\\GuiVersion\\AmongUsModUpdater.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Patrick\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
