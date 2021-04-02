@@ -49,7 +49,12 @@ namespace AmongUsModUpdater
                 }
 
                 gettingInstallationPath();
-                downloadNewVersion();
+
+                await downloadNewVersion();
+                
+                
+                
+                
             } 
             catch (Exception e)
             {
@@ -61,22 +66,24 @@ namespace AmongUsModUpdater
             }
         }
 
-        private void downloadNewVersion()
+        private async Task<bool> downloadNewVersion()
         {
             var pathToSave = path + "\\" + releaseName + ".zip";
             try
             {
+                if(File.Exists(pathToSave)) File.Delete(pathToSave);
+
                 using (WebClient wc = new WebClient())
                 {
                     wc.DownloadProgressChanged += wc_DownloadProgressChanged;
-                    wc.DownloadFile(
+                    await wc.DownloadFileTaskAsync(
                         new Uri(downloadUrl),
                         //Path to save
                         pathToSave
                     );
 
                     wc.Dispose();
-
+                    
                     FileAttributes attributes = File.GetAttributes(pathToSave);
                     File.SetAttributes(pathToSave, File.GetAttributes(pathToSave) | FileAttributes.Hidden);
                 }
@@ -92,7 +99,7 @@ namespace AmongUsModUpdater
                 var zipPath = path + "\\" + releaseName + ".zip";
                 ZipFile.ExtractToDirectory(zipPath, path);
             }
-            
+            return true;
         }
 
         private void gettingInstallationPath()
@@ -142,28 +149,15 @@ namespace AmongUsModUpdater
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
+            downloadProgress.Value = 0;
             getOtherRoles();
         }
 
-        void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        private async void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             downloadProgress.Value = e.ProgressPercentage;
         }
 
-        private void downloadProgress_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void homeButton_Click(object sender, EventArgs e)
         {
