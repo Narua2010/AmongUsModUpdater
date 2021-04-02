@@ -1,0 +1,9 @@
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+
+# Editor directories and files
+*.suo
+/source/GuiVersion/.vs

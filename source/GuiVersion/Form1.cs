@@ -14,6 +14,8 @@ using Newtonsoft.Json;
 using Microsoft.Win32;
 using System.ServiceProcess;
 using System.IO;
+using System.IO.Compression;
+using System.Diagnostics;
 
 namespace AmongUsModUpdater
 {
@@ -30,7 +32,6 @@ namespace AmongUsModUpdater
             InitializeComponent();
 
             getOtherRoles();
-            
         }
 
        
@@ -50,27 +51,32 @@ namespace AmongUsModUpdater
 
                 gettingInstallationPath();
                 downloadNewVersion();
-                deleteOldFiles();
             } 
             catch (Exception e)
             {
 
             }
+            finally
+            {
+                startGame();
+            }
         }
 
         private void downloadNewVersion()
         {
+            var pathToSave = path + "\\" + releaseName + ".zip";
             try
             {
                 using (WebClient wc = new WebClient())
                 {
                     wc.DownloadProgressChanged += wc_DownloadProgressChanged;
-                    var pathToSave = path + "\\" + releaseName + ".zip";
-                    wc.DownloadFileAsync(
+                    wc.DownloadFile(
                         new Uri(downloadUrl),
                         //Path to save
                         pathToSave
                     );
+
+                    wc.Dispose();
 
                     FileAttributes attributes = File.GetAttributes(pathToSave);
                     File.SetAttributes(pathToSave, File.GetAttributes(pathToSave) | FileAttributes.Hidden);
@@ -79,6 +85,13 @@ namespace AmongUsModUpdater
             catch (Exception e)
             {
 
+            }
+            finally
+            {
+                deleteOldFiles();
+
+                var zipPath = path + "\\" + releaseName + ".zip";
+                ZipFile.ExtractToDirectory(zipPath, path);
             }
             
         }
@@ -108,12 +121,24 @@ namespace AmongUsModUpdater
 
         private void deleteOldFiles()
         {
-            if (Directory.Exists(path + "\\mono"))
-            {
-                
-                //then delete folder
-                Directory.Delete(path + "\\mono", true);
-            }
+            if (Directory.Exists(path + "\\mono")) Directory.Delete(path + "\\mono", true);
+            if (Directory.Exists(path + "\\BepInex")) Directory.Delete(path + "\\BepInex", true);
+            if (File.Exists(path + "\\winhttp.dll")) File.Delete(path + "\\winhttp.dll");
+            if (File.Exists(path + "\\steam_appid.txt")) File.Delete(path + "\\steam_appid.txt");
+            if (File.Exists(path + "\\doorstop_config.ini")) File.Delete(path + "\\doorstop_config.ini");
+        }
+
+        private void startGame()
+        {
+            var gamePath = path + "\\Among Us.exe";
+            Process p = new Process();
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.FileName = gamePath;
+            p.Start();
+
+            string output = p.StandardOutput.ReadToEnd();
+            p.WaitForExit();
         }
 
         private void button1_Click(object sender, EventArgs e)
