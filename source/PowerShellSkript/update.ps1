@@ -10,6 +10,9 @@ function Unzip
 {
     param([string]$zipfile, [string]$outpath)
     Expand-Archive -Path $zipfile -DestinationPath $outpath -Force
+    if(Test-Path "./me.eisbison.theotherroles.cfg"){
+        Copy-Item "./me.eisbison.theotherroles.cfg" "./BepInEx/config/me.eisbison.theotherroles.cfg" -force
+    }
 }
  
 function ClearOtherMods 
@@ -45,6 +48,7 @@ function ClearOtherMods
                     Remove-Item "./BepInEx/config/gg.reactor.api.cfg" -Recurse
                 }
                 if(Test-Path "./BepInEx/config/me.eisbison.theotherroles.cfg"){
+                    Copy-Item "./BepInEx/config/me.eisbison.theotherroles.cfg" "./me.eisbison.theotherroles.cfg" -force
                     Remove-Item "./BepInEx/config/me.eisbison.theotherroles.cfg" -Recurse
                 }
             }

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Github\\AmongUsModUpdater\\source\\GuiVersion\\AmongUsModUpdater.csproj": {}
+    "E:\\Documents\\AMongUsUpdate\\AmongUsModUpdater\\source\\GuiVersion\\AmongUsModUpdater.csproj": {}
   },
   "projects": {
-    "D:\\Github\\AmongUsModUpdater\\source\\GuiVersion\\AmongUsModUpdater.csproj": {
+    "E:\\Documents\\AMongUsUpdate\\AmongUsModUpdater\\source\\GuiVersion\\AmongUsModUpdater.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Github\\AmongUsModUpdater\\source\\GuiVersion\\AmongUsModUpdater.csproj",
+        "projectUniqueName": "E:\\Documents\\AMongUsUpdate\\AmongUsModUpdater\\source\\GuiVersion\\AmongUsModUpdater.csproj",
         "projectName": "AmongUsModUpdater",
-        "projectPath": "D:\\Github\\AmongUsModUpdater\\source\\GuiVersion\\AmongUsModUpdater.csproj",
-        "packagesPath": "C:\\Users\\Patrick\\.nuget\\packages\\",
-        "outputPath": "D:\\Github\\AmongUsModUpdater\\source\\GuiVersion\\obj\\",
+        "projectPath": "E:\\Documents\\AMongUsUpdate\\AmongUsModUpdater\\source\\GuiVersion\\AmongUsModUpdater.csproj",
+        "packagesPath": "C:\\Users\\Jolle\\.nuget\\packages\\",
+        "outputPath": "E:\\Documents\\AMongUsUpdate\\AmongUsModUpdater\\source\\GuiVersion\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Patrick\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jolle\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -63,7 +63,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
