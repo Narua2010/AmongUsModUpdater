@@ -30,99 +30,127 @@ namespace AmongUsModUpdater
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.button1 = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.downloadProgress = new System.Windows.Forms.ToolStripProgressBar();
-            this.menuStrip1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
+            this.buttonStart = new System.Windows.Forms.Button();
+            this.downloadProgress = new System.Windows.Forms.ProgressBar();
+            this.homeButton = new System.Windows.Forms.Button();
+            this.configButton = new System.Windows.Forms.Button();
+            this.helpButton = new System.Windows.Forms.Button();
+            this.panelHome = new System.Windows.Forms.Panel();
+            this.panelConfig = new System.Windows.Forms.Panel();
+            this.panelHelp = new System.Windows.Forms.Panel();
+            this.panelHome.SuspendLayout();
+            this.panelHelp.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // buttonStart
             // 
-            this.button1.Location = new System.Drawing.Point(0, 36);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(193, 108);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Start/Update";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuHelp});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1288, 33);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // toolStripMenuHelp
-            // 
-            this.toolStripMenuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuAbout});
-            this.toolStripMenuHelp.Name = "toolStripMenuHelp";
-            this.toolStripMenuHelp.Size = new System.Drawing.Size(65, 29);
-            this.toolStripMenuHelp.Text = "Help";
-            // 
-            // toolStripMenuAbout
-            // 
-            this.toolStripMenuAbout.Name = "toolStripMenuAbout";
-            this.toolStripMenuAbout.Size = new System.Drawing.Size(164, 34);
-            this.toolStripMenuAbout.Text = "About";
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.downloadProgress});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 850);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1288, 23);
-            this.statusStrip1.TabIndex = 3;
-            this.statusStrip1.Text = "statusStrip1";
+            this.buttonStart.Location = new System.Drawing.Point(192, 149);
+            this.buttonStart.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonStart.Name = "buttonStart";
+            this.buttonStart.Size = new System.Drawing.Size(135, 65);
+            this.buttonStart.TabIndex = 1;
+            this.buttonStart.Text = "Start/Update";
+            this.buttonStart.UseVisualStyleBackColor = true;
+            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
             // 
             // downloadProgress
             // 
-            this.downloadProgress.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.downloadProgress.Location = new System.Drawing.Point(66, 74);
+            this.downloadProgress.Margin = new System.Windows.Forms.Padding(10);
             this.downloadProgress.Name = "downloadProgress";
-            this.downloadProgress.Size = new System.Drawing.Size(300, 15);
+            this.downloadProgress.Size = new System.Drawing.Size(398, 23);
+            this.downloadProgress.TabIndex = 4;
+            this.downloadProgress.Click += new System.EventHandler(this.downloadProgress_Click);
+            // 
+            // homeButton
+            // 
+            this.homeButton.Location = new System.Drawing.Point(12, 12);
+            this.homeButton.Name = "homeButton";
+            this.homeButton.Size = new System.Drawing.Size(125, 75);
+            this.homeButton.TabIndex = 5;
+            this.homeButton.Text = "Home";
+            this.homeButton.UseVisualStyleBackColor = true;
+            this.homeButton.Click += new System.EventHandler(this.homeButton_Click);
+            // 
+            // configButton
+            // 
+            this.configButton.Location = new System.Drawing.Point(12, 93);
+            this.configButton.Name = "configButton";
+            this.configButton.Size = new System.Drawing.Size(125, 75);
+            this.configButton.TabIndex = 6;
+            this.configButton.Text = "Config";
+            this.configButton.UseVisualStyleBackColor = true;
+            this.configButton.Click += new System.EventHandler(this.configButton_Click);
+            // 
+            // helpButton
+            // 
+            this.helpButton.Location = new System.Drawing.Point(12, 174);
+            this.helpButton.Name = "helpButton";
+            this.helpButton.Size = new System.Drawing.Size(125, 75);
+            this.helpButton.TabIndex = 7;
+            this.helpButton.Text = "Help";
+            this.helpButton.UseVisualStyleBackColor = true;
+            this.helpButton.Click += new System.EventHandler(this.helpButton_Click);
+            // 
+            // panelHome
+            // 
+            this.panelHome.Controls.Add(this.downloadProgress);
+            this.panelHome.Controls.Add(this.buttonStart);
+            this.panelHome.Controls.Add(this.panelHelp);
+            this.panelHome.Location = new System.Drawing.Point(143, 12);
+            this.panelHome.Name = "panelHome";
+            this.panelHome.Size = new System.Drawing.Size(549, 417);
+            this.panelHome.TabIndex = 8;
+            this.panelHome.Visible = false;
+            // 
+            // panelConfig
+            // 
+            this.panelConfig.Location = new System.Drawing.Point(0, 0);
+            this.panelConfig.Name = "panelConfig";
+            this.panelConfig.Size = new System.Drawing.Size(549, 417);
+            this.panelConfig.TabIndex = 9;
+            this.panelConfig.Visible = false;
+            // 
+            // panelHelp
+            // 
+            this.panelHelp.Controls.Add(this.panelConfig);
+            this.panelHelp.Location = new System.Drawing.Point(0, 0);
+            this.panelHelp.Name = "panelHelp";
+            this.panelHelp.Size = new System.Drawing.Size(549, 417);
+            this.panelHelp.TabIndex = 10;
+            this.panelHelp.Visible = false;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1288, 873);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.menuStrip1);
+            this.ClientSize = new System.Drawing.Size(704, 441);
+            this.Controls.Add(this.panelHome);
+            this.Controls.Add(this.helpButton);
+            this.Controls.Add(this.configButton);
+            this.Controls.Add(this.homeButton);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Among Us Mod Updater";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.panelHome.ResumeLayout(false);
+            this.panelHelp.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripProgressBar downloadProgress;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuHelp;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuAbout;
+        private System.Windows.Forms.Button buttonStart;
+        private System.Windows.Forms.ProgressBar downloadProgress;
+        private System.Windows.Forms.Button homeButton;
+        private System.Windows.Forms.Button configButton;
+        private System.Windows.Forms.Button helpButton;
+        private System.Windows.Forms.Panel panelHome;
+        private System.Windows.Forms.Panel panelConfig;
+        private System.Windows.Forms.Panel panelHelp;
     }
 }
 

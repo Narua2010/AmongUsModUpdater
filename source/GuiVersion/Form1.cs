@@ -30,6 +30,7 @@ namespace AmongUsModUpdater
         public Form1()
         {
             InitializeComponent();
+            panelHome.Visible = true;
         }
 
        
@@ -139,7 +140,7 @@ namespace AmongUsModUpdater
             p.WaitForExit();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonStart_Click(object sender, EventArgs e)
         {
             getOtherRoles();
         }
@@ -147,6 +148,42 @@ namespace AmongUsModUpdater
         void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             downloadProgress.Value = e.ProgressPercentage;
+        }
+
+        private void downloadProgress_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void homeButton_Click(object sender, EventArgs e)
+        {
+            panelHome.Visible = true;
+            panelConfig.Visible = false;
+            panelHelp.Visible = false;
+        }
+
+        private void configButton_Click(object sender, EventArgs e)
+        {
+            panelHome.Visible = false;
+            panelConfig.Visible = true;
+            panelHelp.Visible = false;
+        }
+
+        private void helpButton_Click(object sender, EventArgs e)
+        {
+            panelHome.Visible = false;
+            panelConfig.Visible = false;
+            panelHelp.Visible = true;
         }
     }
 }
