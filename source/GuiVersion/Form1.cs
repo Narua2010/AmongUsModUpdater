@@ -30,8 +30,6 @@ namespace AmongUsModUpdater
         public Form1()
         {
             InitializeComponent();
-
-            getOtherRoles();
         }
 
        
@@ -143,7 +141,7 @@ namespace AmongUsModUpdater
 
         private void button1_Click(object sender, EventArgs e)
         {
-            folderBrowserDialog1.ShowDialog();
+            getOtherRoles();
         }
 
         void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
