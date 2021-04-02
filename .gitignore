@@ -11,3 +11,4 @@ source/GuiVersion/.vs/*
 source/GuiVersion/.vs/AmongUsModUpdater/v16/.suo
 source/GuiVersion/obj/Release/net5.0-windows/AmongUsModUpdater.csprojAssemblyReference.cache
 /source/GuiVersion/bin/
+/source/GuiVersion/obj/
