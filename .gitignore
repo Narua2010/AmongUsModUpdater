@@ -6,4 +6,4 @@
 
 # Editor directories and files
 *.suo
-/source/GuiVersion/.vs
+source/GuiVersion/.vs/*
