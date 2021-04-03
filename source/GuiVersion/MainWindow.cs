@@ -16,6 +16,7 @@ using System.ServiceProcess;
 using System.IO;
 using System.IO.Compression;
 using System.Diagnostics;
+using System.Threading;
 
 namespace AmongUsModUpdater
 {
@@ -24,10 +25,18 @@ namespace AmongUsModUpdater
         static string request = "https://api.github.com/repos/Eisbison/TheOtherRoles/releases/latest";
         static string releaseName;
         static string downloadUrl;
+        bool configControll = false;
 
         public MainWindow()
         {
             InitializeComponent();
+
+            //#if DEBUG
+            //    Properties.Settings.Default.Backup = false;
+            //    Properties.Settings.Default.GamePath = "";
+            //    Properties.Settings.Default.OtherModsReleaseId = "";
+            //    Properties.Settings.Default.Save();
+            //#endif
 
             labelVersion.Text = "Among Us Mod Updater Version: " +Application.ProductVersion;
             settingsGamePathTextBox.Text = Properties.Settings.Default.GamePath;
@@ -103,7 +112,22 @@ namespace AmongUsModUpdater
 
             if(result == DialogResult.OK && !string.IsNullOrWhiteSpace(manualLocationFolderDialog.SelectedPath))
             {
-                settingsGamePathTextBox.Text = manualLocationFolderDialog.SelectedPath;
+                if(File.Exists(manualLocationFolderDialog.SelectedPath + "\\Among Us.exe"))
+                {
+                    settingsGamePathTextBox.Text = manualLocationFolderDialog.SelectedPath;
+                }
+                else
+                {
+                    string message = "The Among Us.exe could not be found in the selected folder. Please select the correct path where it is located.";
+                    string caption = "Error";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    DialogResult response = MessageBox.Show(message, caption, buttons);
+
+                    if (response == DialogResult.OK)
+                    {
+                        settingButtonManual.PerformClick();
+                    }
+                }
             }
         }
         private void settingsButtonAutomated_Click(object sender, EventArgs e)
@@ -144,7 +168,18 @@ namespace AmongUsModUpdater
             {
             }
 
-            return path;
+            if (!string.IsNullOrWhiteSpace(path))
+            {
+                return path;
+            }
+            else
+            {
+                string message = "The Among Us.exe could not be found. Please search for it manually or install the game.";
+                string caption = "Error";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult response = MessageBox.Show(message, caption, buttons);
+                return null;
+            }
         }
         private void settingsGamePathTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -174,21 +209,61 @@ namespace AmongUsModUpdater
         {
             if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.GamePath))
             {
-                var gamePath = Properties.Settings.Default.GamePath + "\\Among Us.exe";
-                Process p = new Process();
-                p.StartInfo.UseShellExecute = false;
-                p.StartInfo.RedirectStandardOutput = true;
-                p.StartInfo.FileName = gamePath;
-                p.Start();
+                if (checkInstallation())
+                {
+                    var gamePath = Properties.Settings.Default.GamePath + "\\Among Us.exe";
+                    Process p = new Process();
+                    p.StartInfo.UseShellExecute = false;
+                    p.StartInfo.RedirectStandardOutput = true;
+                    p.StartInfo.FileName = gamePath;
+                    p.Start();
 
-                string output = p.StandardOutput.ReadToEnd();
-                downloadProgress.Value = 0;
-                p.WaitForExit();
+                    string output = p.StandardOutput.ReadToEnd();
+                    downloadProgress.Value = 0;
+                    p.WaitForExit();
+                }
+                else
+                {
+                    buttoneHomeUpdate.Visible = true;
+                    buttonHomeStart.Visible = false;
+                    downloadProgress.Visible = true;
+
+                    string message = "It looks like the mods are not installed. Do you want to update or install them now?";
+                    string caption = "Error";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult response = MessageBox.Show(message, caption, buttons);
+
+                    if (response == DialogResult.Yes)
+                    {
+                        buttoneHomeUpdate.PerformClick();
+                    }
+                }
             }
         }
         private void buttoneHomeUpdate_Click(object sender, EventArgs e)
         {
-            var check = downloadNewVersion();
+            if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.GamePath))
+            {
+                if (Properties.Settings.Default.Backup)
+                {
+                    if (File.Exists(Properties.Settings.Default.GamePath.Replace("\\Among Us", "") + "\\AmongUsBackup" + DateTime.Now.ToString("yyyyMMdd") + ".zip")) File.Delete(Properties.Settings.Default.GamePath.Replace("\\Among Us", "") + "\\AmongUsBackup" + DateTime.Now.ToString("yyyyMMdd") + ".zip");
+                    ZipFile.CreateFromDirectory(Properties.Settings.Default.GamePath, Properties.Settings.Default.GamePath.Replace("\\Among Us", "") + "\\AmongUsBackup"+ DateTime.Now.ToString("yyyyMMdd") +".zip");
+                }
+                var check = downloadNewVersion();
+            }
+            else
+            {
+                string message = "No play path was given. Please enter it under the settings. Would you like to be redirected to the settings?";
+                string caption = "Error";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult response = MessageBox.Show(message, caption, buttons);
+
+                if (response == DialogResult.Yes)
+                {
+                    settingsButton.PerformClick();
+                }
+            }
+            
         }
         private async Task<bool> downloadNewVersion()
         {
@@ -223,16 +298,42 @@ namespace AmongUsModUpdater
 
                 var zipPath = Properties.Settings.Default.GamePath + "\\" + releaseName + ".zip";
                 ZipFile.ExtractToDirectory(zipPath, Properties.Settings.Default.GamePath);
-                buttonHomeStart.Visible = true;
+
+                if (configControll)
+                {
+                    File.Copy(Properties.Settings.Default.GamePath + "\\com.comando.essentials.cfg", Properties.Settings.Default.GamePath + "\\BepInex\\config\\com.comando.essentials.cfg");
+                }
+
+                
                 buttoneHomeUpdate.Visible = false;
+                buttonHomeStart.Visible = true;
                 downloadProgress.Visible = false;
-                startGame();
+
+                if (File.Exists(Properties.Settings.Default.GamePath + "\\com.comando.essentials.cfg")) File.Delete(Properties.Settings.Default.GamePath + "\\com.comando.essentials.cfg");
+                if (File.Exists(Properties.Settings.Default.GamePath + "\\" + releaseName + ".zip")) File.Delete(Properties.Settings.Default.GamePath + "\\" + releaseName + ".zip");
+
+                string message = "The mod has been successfully updated. Would you like to start the game now?";
+                string caption = "Update finished";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult response = MessageBox.Show(message, caption, buttons);
+
+                if (response == DialogResult.Yes)
+                {
+                    startGame();
+                }
             }
             return true;
         }
         private void deleteOldFiles()
         {
             string path = Properties.Settings.Default.GamePath;
+            
+            if (File.Exists(path + "\\BepInex\\config\\com.comando.essentials.cfg"))
+            {
+                File.Copy(path + "\\BepInex\\config\\com.comando.essentials.cfg", path + "\\com.comando.essentials.cfg");
+                configControll = true;
+            }
+
             if (Directory.Exists(path + "\\mono")) Directory.Delete(path + "\\mono", true);
             if (Directory.Exists(path + "\\BepInex")) Directory.Delete(path + "\\BepInex", true);
             if (File.Exists(path + "\\winhttp.dll")) File.Delete(path + "\\winhttp.dll");
@@ -272,6 +373,14 @@ namespace AmongUsModUpdater
             {
 
             }
+        }
+        private bool checkInstallation()
+        {
+            string path = Properties.Settings.Default.GamePath;
+            
+            if (!Directory.Exists(path + "\\mono") || !Directory.Exists(path + "\\BepInex") || !File.Exists(path + "\\winhttp.dll") || !File.Exists(path + "\\steam_appid.txt") || !File.Exists(path + "\\doorstop_config.ini")) return false;
+            
+            return true;
         }
     }
 }

@@ -129,7 +129,7 @@ namespace AmongUsModUpdater
             // otherRolesBanner
             // 
             this.otherRolesBanner.Image = ((System.Drawing.Image)(resources.GetObject("otherRolesBanner.Image")));
-            this.otherRolesBanner.Location = new System.Drawing.Point(45, 24);
+            this.otherRolesBanner.Location = new System.Drawing.Point(45, 0);
             this.otherRolesBanner.Name = "otherRolesBanner";
             this.otherRolesBanner.Size = new System.Drawing.Size(672, 128);
             this.otherRolesBanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
