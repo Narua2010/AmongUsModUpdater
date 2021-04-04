@@ -174,19 +174,22 @@ namespace AmongUsModUpdater
             if (ex.Result != null)
             {
                 this.settingsGamePathTextBox.Text = ex.Result.ToString();
-                
-            }else
+                worker = new BackgroundWorker();
+            }
+            else
             {
                 string message = "The Among Us.exe could not be found. Please search for it manually or install the game.";
                 string caption = "Error";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 DialogResult response = MessageBox.Show(message, caption, buttons);
                 this.settingsGamePathTextBox.Text = "";
+                worker = new BackgroundWorker();
             }
             this.label1.Visible = false;
             this.progressBar1.Visible = false;
             this.buttonWorkerCancel.Visible = false;
             this.settingsButtonAutomated.Enabled = true;
+            worker = new BackgroundWorker();
         }
         public class ProgressArgument
         {
