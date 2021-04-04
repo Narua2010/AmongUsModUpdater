@@ -131,12 +131,15 @@ namespace AmongUsModUpdater
             // 
             this.otherRolesBanner.Image = ((System.Drawing.Image)(resources.GetObject("otherRolesBanner.Image")));
             this.otherRolesBanner.Location = new System.Drawing.Point(32, 0);
-            this.otherRolesBanner.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.otherRolesBanner.Margin = new System.Windows.Forms.Padding(2);
             this.otherRolesBanner.Name = "otherRolesBanner";
             this.otherRolesBanner.Size = new System.Drawing.Size(470, 77);
             this.otherRolesBanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.otherRolesBanner.TabIndex = 7;
             this.otherRolesBanner.TabStop = false;
+            this.otherRolesBanner.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseDown);
+            this.otherRolesBanner.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseMove);
+            this.otherRolesBanner.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseUp);
             // 
             // buttonHomeStart
             // 
@@ -149,7 +152,7 @@ namespace AmongUsModUpdater
             this.buttonHomeStart.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
             this.buttonHomeStart.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
             this.buttonHomeStart.Location = new System.Drawing.Point(176, 103);
-            this.buttonHomeStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonHomeStart.Margin = new System.Windows.Forms.Padding(2);
             this.buttonHomeStart.Name = "buttonHomeStart";
             this.buttonHomeStart.Radius = 10;
             this.buttonHomeStart.Size = new System.Drawing.Size(176, 71);
@@ -172,7 +175,7 @@ namespace AmongUsModUpdater
             this.buttoneHomeUpdate.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
             this.buttoneHomeUpdate.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
             this.buttoneHomeUpdate.Location = new System.Drawing.Point(176, 102);
-            this.buttoneHomeUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttoneHomeUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.buttoneHomeUpdate.Name = "buttoneHomeUpdate";
             this.buttoneHomeUpdate.Radius = 10;
             this.buttoneHomeUpdate.Size = new System.Drawing.Size(176, 72);
@@ -187,7 +190,7 @@ namespace AmongUsModUpdater
             // downloadProgress
             // 
             this.downloadProgress.Location = new System.Drawing.Point(69, 190);
-            this.downloadProgress.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.downloadProgress.Margin = new System.Windows.Forms.Padding(10);
             this.downloadProgress.Name = "downloadProgress";
             this.downloadProgress.Size = new System.Drawing.Size(398, 23);
             this.downloadProgress.TabIndex = 4;
@@ -219,7 +222,7 @@ namespace AmongUsModUpdater
             this.settingsButtonAutomated.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
             this.settingsButtonAutomated.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
             this.settingsButtonAutomated.Location = new System.Drawing.Point(214, 109);
-            this.settingsButtonAutomated.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.settingsButtonAutomated.Margin = new System.Windows.Forms.Padding(2);
             this.settingsButtonAutomated.Name = "settingsButtonAutomated";
             this.settingsButtonAutomated.Radius = 10;
             this.settingsButtonAutomated.Size = new System.Drawing.Size(139, 29);
@@ -241,7 +244,7 @@ namespace AmongUsModUpdater
             this.settingButtonManual.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
             this.settingButtonManual.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
             this.settingButtonManual.Location = new System.Drawing.Point(34, 109);
-            this.settingButtonManual.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.settingButtonManual.Margin = new System.Windows.Forms.Padding(2);
             this.settingButtonManual.Name = "settingButtonManual";
             this.settingButtonManual.Radius = 10;
             this.settingButtonManual.Size = new System.Drawing.Size(139, 29);
@@ -280,7 +283,7 @@ namespace AmongUsModUpdater
             this.settingsToggleBackup.ForeColor = System.Drawing.Color.White;
             this.settingsToggleBackup.IsOn = false;
             this.settingsToggleBackup.Location = new System.Drawing.Point(32, 190);
-            this.settingsToggleBackup.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.settingsToggleBackup.Margin = new System.Windows.Forms.Padding(2);
             this.settingsToggleBackup.Name = "settingsToggleBackup";
             this.settingsToggleBackup.OffColor = System.Drawing.Color.DarkGray;
             this.settingsToggleBackup.OffText = "";
@@ -300,7 +303,7 @@ namespace AmongUsModUpdater
             this.settingsGamePathTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.settingsGamePathTextBox.ForeColor = System.Drawing.Color.DimGray;
             this.settingsGamePathTextBox.Location = new System.Drawing.Point(32, 69);
-            this.settingsGamePathTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.settingsGamePathTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.settingsGamePathTextBox.Name = "settingsGamePathTextBox";
             this.settingsGamePathTextBox.Size = new System.Drawing.Size(321, 30);
             this.settingsGamePathTextBox.TabIndex = 2;
@@ -422,7 +425,7 @@ namespace AmongUsModUpdater
             this.panelMenu.Controls.Add(this.helpButton);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
-            this.panelMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelMenu.Margin = new System.Windows.Forms.Padding(2);
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(158, 332);
             this.panelMenu.TabIndex = 9;
@@ -445,19 +448,21 @@ namespace AmongUsModUpdater
             // 
             this.Logo.Image = ((System.Drawing.Image)(resources.GetObject("Logo.Image")));
             this.Logo.Location = new System.Drawing.Point(47, 0);
-            this.Logo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Logo.Margin = new System.Windows.Forms.Padding(2);
             this.Logo.Name = "Logo";
             this.Logo.Size = new System.Drawing.Size(68, 60);
             this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Logo.TabIndex = 0;
             this.Logo.TabStop = false;
+            this.Logo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseDown);
+            this.Logo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseMove);
             // 
             // panelTop
             // 
             this.panelTop.Controls.Add(this.buttonExit);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(158, 0);
-            this.panelTop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelTop.Margin = new System.Windows.Forms.Padding(2);
             this.panelTop.Name = "panelTop";
             this.panelTop.Size = new System.Drawing.Size(542, 60);
             this.panelTop.TabIndex = 10;
@@ -470,7 +475,7 @@ namespace AmongUsModUpdater
             this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExit.ForeColor = System.Drawing.Color.Silver;
             this.buttonExit.Location = new System.Drawing.Point(507, 7);
-            this.buttonExit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonExit.Margin = new System.Windows.Forms.Padding(2);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(27, 23);
             this.buttonExit.TabIndex = 10;
@@ -482,7 +487,7 @@ namespace AmongUsModUpdater
             // 
             this.panelMenuActive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
             this.panelMenuActive.Location = new System.Drawing.Point(158, 60);
-            this.panelMenuActive.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelMenuActive.Margin = new System.Windows.Forms.Padding(2);
             this.panelMenuActive.Name = "panelMenuActive";
             this.panelMenuActive.Size = new System.Drawing.Size(7, 75);
             this.panelMenuActive.TabIndex = 11;
@@ -504,10 +509,12 @@ namespace AmongUsModUpdater
             this.ForeColor = System.Drawing.Color.Silver;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Among Us Mod Updater";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseMove);
             this.panelHome.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.otherRolesBanner)).EndInit();
             this.panelSettings.ResumeLayout(false);
