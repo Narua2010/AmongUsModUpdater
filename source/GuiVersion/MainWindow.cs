@@ -26,6 +26,7 @@ namespace AmongUsModUpdater
         static string releaseName;
         static string downloadUrl;
         bool configControll = false;
+        Point lastPoint;
 
         public MainWindow()
         {
@@ -374,6 +375,8 @@ namespace AmongUsModUpdater
 
             }
         }
+
+        
         private bool checkInstallation()
         {
             string path = Properties.Settings.Default.GamePath;
@@ -381,6 +384,20 @@ namespace AmongUsModUpdater
             if (!Directory.Exists(path + "\\mono") || !Directory.Exists(path + "\\BepInex") || !File.Exists(path + "\\winhttp.dll") || !File.Exists(path + "\\steam_appid.txt") || !File.Exists(path + "\\doorstop_config.ini")) return false;
             
             return true;
+        }
+
+        private void panelMenu_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
+        }
+
+        private void panelMenu_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
         }
     }
 }
