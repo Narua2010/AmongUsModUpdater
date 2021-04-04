@@ -93,12 +93,7 @@ namespace AmongUsModUpdater
         }
         private void linkLabelResourcesGit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            ProcessStartInfo psInfo = new ProcessStartInfo
-            {
-                FileName = "https://github.com/Narua2010/AmongUsModUpdater",
-                UseShellExecute = true
-            };
-            Process.Start(psInfo);
+            openLinkInBrowser("https://github.com/Narua2010/AmongUsModUpdater");
         }
         private void linkLabelResourcesGit_MouseEnter(object sender, EventArgs e)
         {
@@ -134,7 +129,7 @@ namespace AmongUsModUpdater
         }
         private void settingsButtonAutomated_Click(object sender, EventArgs e)
         {
-            string message = "The automatic search can take longer and cause problems with slow systems.";
+            string message = "The automatic search can take longer and cause problems with slow systems. Especially if you have more than two hard drives. If you continue your system might slow down.";
             string caption = "Attention";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult response = MessageBox.Show(message, caption, buttons);
@@ -162,6 +157,7 @@ namespace AmongUsModUpdater
                 DriveInfo[] allDrives = DriveInfo.GetDrives();
                 foreach (var drive in allDrives)
                 {
+                    string[] dirs = Directory.GetDirectories(drive.Name, "AmongUs", options);
                     string[] dirs = Directory.GetFiles(drive.Name, @"Among Us.exe", options);
                     if (dirs.Length > 0) path = dirs[0].Replace("\\Among Us.exe", "");
                 }
