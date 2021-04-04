@@ -243,7 +243,6 @@ namespace AmongUsModUpdater
             this.label1.TabIndex = 9;
             this.label1.Text = "Processed Drives";
             this.label1.Visible = false;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // progressBar1
             // 
@@ -253,7 +252,6 @@ namespace AmongUsModUpdater
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 8;
             this.progressBar1.Visible = false;
-            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
             // settingsButtonAutomated
             // 
