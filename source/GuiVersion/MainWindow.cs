@@ -28,6 +28,7 @@ namespace AmongUsModUpdater
         bool configControll = false;
         private Point lastPointTmp = new Point(0,0);
         private Point lastPoint = new Point(0, 0);
+        BackgroundWorker worker = new BackgroundWorker();
 
         public MainWindow()
         {
@@ -136,13 +137,153 @@ namespace AmongUsModUpdater
 
             if(response == DialogResult.Yes)
             {
-                string result = gettingInstallationPath();
-                if (!string.IsNullOrWhiteSpace(result))
-                {
-                    settingsGamePathTextBox.Text = result;
-                }
+                
+                this.progressBar1.Visible = true;
+                this.label1.Visible = true;
+                this.buttonWorkerCancel.Visible = true;
+                this.buttonWorkerCancel.Enabled = true;
+                this.settingsButtonAutomated.Enabled = false;
+
+                worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+                worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunComplete);
+                worker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+                worker.WorkerReportsProgress = true;
+                worker.WorkerSupportsCancellation = true;
+                worker.RunWorkerAsync();
             }
         }
+
+        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            ProgressArgument progressArgument = (ProgressArgument)e.UserState;
+            this.label1.Text = "Searching in drive " + progressArgument.count + " of " + progressArgument.allDrivesLength;
+        }
+
+        private void backgroundWorker1_RunComplete(object sender, RunWorkerCompletedEventArgs ex)
+        {
+            if (ex.Cancelled)
+            {
+                this.label1.Visible = false;
+                this.progressBar1.Visible = false;
+                this.buttonWorkerCancel.Visible = false;
+                this.settingsButtonAutomated.Enabled = true;
+                this.label1.Text = "Searching in drive ...";
+                worker = new BackgroundWorker();
+                return;
+            }
+            if (ex.Result != null)
+            {
+                this.settingsGamePathTextBox.Text = ex.Result.ToString();
+                
+            }else
+            {
+                string message = "The Among Us.exe could not be found. Please search for it manually or install the game.";
+                string caption = "Error";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult response = MessageBox.Show(message, caption, buttons);
+                this.settingsGamePathTextBox.Text = "";
+            }
+            this.label1.Visible = false;
+            this.progressBar1.Visible = false;
+            this.buttonWorkerCancel.Visible = false;
+            this.settingsButtonAutomated.Enabled = true;
+        }
+        public class ProgressArgument
+        {
+            public int count { get; set; }
+            public int allDrivesLength { get; set; }
+        }
+
+        private void cancelAsyncButton_Click(System.Object sender, System.EventArgs e)
+        {
+            // Cancel the asynchronous operation.
+            worker.CancelAsync();
+
+            this.buttonWorkerCancel.Enabled = false;
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs ex)
+        {
+            string path = "";
+            BackgroundWorker worker = sender as BackgroundWorker;
+            ProgressArgument progressArgument = new ProgressArgument();
+            try
+            {
+                var options = new EnumerationOptions()
+                {
+                    IgnoreInaccessible = true,
+                    RecurseSubdirectories = true
+                };
+
+                DriveInfo[] allDrives = DriveInfo.GetDrives();
+                int count = 1;
+                foreach (var drive in allDrives)
+                {
+                    if (worker.CancellationPending)
+                    {
+                        ex.Cancel = true;
+                        return;
+                    }
+                    progressArgument.count = count;
+                    progressArgument.allDrivesLength = allDrives.Length;
+                    worker.ReportProgress(10, progressArgument);
+
+                    string[] dirs = Directory.GetFiles(drive.Name, @"Among Us.exe", options);
+                    if (dirs.Length > 0)
+                    {
+                        path = dirs[0].Replace("\\Among Us.exe", "");
+                        ex.Result = path;
+                        return;
+                    }
+                    count++;
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+
+        }
+
+        private void setInstallationPath()
+        {
+            string path = "";
+            try
+            {
+                var options = new EnumerationOptions()
+                {
+                    IgnoreInaccessible = true,
+                    RecurseSubdirectories = true
+                };
+
+                DriveInfo[] allDrives = DriveInfo.GetDrives();
+                foreach (var drive in allDrives)
+                {
+                    string[] dirs = Directory.GetFiles(drive.Name, @"Among Us.exe", options);
+                    if (dirs.Length > 0)
+                    {
+                        path = dirs[0].Replace("\\Among Us.exe", "");
+                        settingsGamePathTextBox.Text = path;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+            }
+            if (!string.IsNullOrWhiteSpace(path))
+            {
+                settingsGamePathTextBox.Text = "";
+            }
+            else
+            {
+                string message = "The Among Us.exe could not be found. Please search for it manually or install the game.";
+                string caption = "Error";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult response = MessageBox.Show(message, caption, buttons);
+                settingsGamePathTextBox.Text = "";
+            }
+        }
+
         private string gettingInstallationPath()
         {
             string path = "";

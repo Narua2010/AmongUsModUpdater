@@ -39,6 +39,9 @@ namespace AmongUsModUpdater
             this.buttoneHomeUpdate = new CustomButton.CustomButton();
             this.downloadProgress = new System.Windows.Forms.ProgressBar();
             this.panelSettings = new System.Windows.Forms.Panel();
+            this.buttonWorkerCancel = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.settingsButtonAutomated = new CustomButton.CustomButton();
             this.settingButtonManual = new CustomButton.CustomButton();
             this.labelSettingsHeader = new System.Windows.Forms.Label();
@@ -198,6 +201,9 @@ namespace AmongUsModUpdater
             // 
             // panelSettings
             // 
+            this.panelSettings.Controls.Add(this.buttonWorkerCancel);
+            this.panelSettings.Controls.Add(this.label1);
+            this.panelSettings.Controls.Add(this.progressBar1);
             this.panelSettings.Controls.Add(this.settingsButtonAutomated);
             this.panelSettings.Controls.Add(this.settingButtonManual);
             this.panelSettings.Controls.Add(this.labelSettingsHeader);
@@ -212,6 +218,42 @@ namespace AmongUsModUpdater
             this.panelSettings.Visible = false;
             this.panelSettings.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseDown);
             this.panelSettings.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseMove);
+            // 
+            // buttonWorkerCancel
+            // 
+            this.buttonWorkerCancel.FlatAppearance.BorderSize = 0;
+            this.buttonWorkerCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonWorkerCancel.ForeColor = System.Drawing.Color.Silver;
+            this.buttonWorkerCancel.Location = new System.Drawing.Point(386, 226);
+            this.buttonWorkerCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonWorkerCancel.Name = "buttonWorkerCancel";
+            this.buttonWorkerCancel.Size = new System.Drawing.Size(27, 23);
+            this.buttonWorkerCancel.TabIndex = 11;
+            this.buttonWorkerCancel.Text = "X";
+            this.buttonWorkerCancel.UseVisualStyleBackColor = true;
+            this.buttonWorkerCancel.Visible = false;
+            this.buttonWorkerCancel.Click += new System.EventHandler(this.cancelAsyncButton_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(32, 252);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 15);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Processed Drives";
+            this.label1.Visible = false;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(32, 226);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(349, 23);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar1.TabIndex = 8;
+            this.progressBar1.Visible = false;
+            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
             // settingsButtonAutomated
             // 
@@ -503,12 +545,12 @@ namespace AmongUsModUpdater
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(700, 332);
+            this.Controls.Add(this.panelSettings);
             this.Controls.Add(this.panelMenuActive);
             this.Controls.Add(this.panelTop);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelHome);
             this.Controls.Add(this.panelHelp);
-            this.Controls.Add(this.panelSettings);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.Silver;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -565,6 +607,9 @@ namespace AmongUsModUpdater
         private CustomButton.CustomButton buttonHomeStart;
         private CustomButton.CustomButton buttoneHomeUpdate;
         private System.Windows.Forms.PictureBox otherRolesBanner;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button buttonWorkerCancel;
     }
 }
 
