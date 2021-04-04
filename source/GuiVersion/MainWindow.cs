@@ -157,9 +157,12 @@ namespace AmongUsModUpdater
                 DriveInfo[] allDrives = DriveInfo.GetDrives();
                 foreach (var drive in allDrives)
                 {
-                    string[] dirs = Directory.GetDirectories(drive.Name, "AmongUs", options);
                     string[] dirs = Directory.GetFiles(drive.Name, @"Among Us.exe", options);
-                    if (dirs.Length > 0) path = dirs[0].Replace("\\Among Us.exe", "");
+                    if (dirs.Length > 0)
+                    {
+                        path = dirs[0].Replace("\\Among Us.exe", "");
+                        return path;
+                    }
                 }
             }
             catch (Exception e)
