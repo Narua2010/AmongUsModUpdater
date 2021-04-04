@@ -210,6 +210,8 @@ namespace AmongUsModUpdater
             this.panelSettings.Size = new System.Drawing.Size(528, 372);
             this.panelSettings.TabIndex = 9;
             this.panelSettings.Visible = false;
+            this.panelSettings.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseDown);
+            this.panelSettings.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseMove);
             // 
             // settingsButtonAutomated
             // 
@@ -333,6 +335,8 @@ namespace AmongUsModUpdater
             this.panelHelp.Size = new System.Drawing.Size(528, 372);
             this.panelHelp.TabIndex = 10;
             this.panelHelp.Visible = false;
+            this.panelHelp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseDown);
+            this.panelHelp.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseMove);
             // 
             // labelCopyright
             // 
