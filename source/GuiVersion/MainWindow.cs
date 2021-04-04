@@ -26,17 +26,19 @@ namespace AmongUsModUpdater
         static string releaseName;
         static string downloadUrl;
         bool configControll = false;
+        private Point lastPointTmp = new Point(0,0);
+        private Point lastPoint = new Point(0, 0);
 
         public MainWindow()
         {
             InitializeComponent();
 
-            //#if DEBUG
-            //    Properties.Settings.Default.Backup = false;
-            //    Properties.Settings.Default.GamePath = "";
-            //    Properties.Settings.Default.OtherModsReleaseId = "";
-            //    Properties.Settings.Default.Save();
-            //#endif
+            #if DEBUG
+                        Properties.Settings.Default.Backup = false;
+                        Properties.Settings.Default.GamePath = "";
+                        Properties.Settings.Default.OtherModsReleaseId = "";
+                        Properties.Settings.Default.Save();
+            #endif
 
             labelVersion.Text = "Among Us Mod Updater Version: " +Application.ProductVersion;
             settingsGamePathTextBox.Text = Properties.Settings.Default.GamePath;
@@ -374,6 +376,8 @@ namespace AmongUsModUpdater
 
             }
         }
+
+        
         private bool checkInstallation()
         {
             string path = Properties.Settings.Default.GamePath;
@@ -381,6 +385,39 @@ namespace AmongUsModUpdater
             if (!Directory.Exists(path + "\\mono") || !Directory.Exists(path + "\\BepInex") || !File.Exists(path + "\\winhttp.dll") || !File.Exists(path + "\\steam_appid.txt") || !File.Exists(path + "\\doorstop_config.ini")) return false;
             
             return true;
+        }
+
+        private void panelMenu_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            } 
+        }
+
+        private void openLinkInBrowser(string link)
+        {
+            ProcessStartInfo psInfo = new ProcessStartInfo
+            {
+                FileName = link,
+                UseShellExecute = true
+            };
+            Process.Start(psInfo);
+        }
+
+        private void panelMenu_MouseUp(object sender, MouseEventArgs e)
+        {
+            if(new Point(this.Left, this.Top) == lastPointTmp || lastPointTmp == new Point(0,0))
+            {
+                openLinkInBrowser("https://github.com/Eisbison/TheOtherRoles");
+            }
+        }
+
+        private void panelMenu_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPointTmp = new Point(this.Left, this.Top);
+            lastPoint = new Point(e.X, e.Y);            
         }
     }
 }
