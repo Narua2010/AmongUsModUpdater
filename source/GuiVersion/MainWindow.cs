@@ -18,6 +18,7 @@ namespace AmongUsModUpdater
         static string request = "https://api.github.com/repos/Eisbison/TheOtherRoles/releases/latest";
         static string releaseName;
         static string downloadUrl;
+        static string newVersionUrl;
         bool configControll = false;
         private Point lastPointTmp = new Point(0, 0);
         private Point lastPoint = new Point(0, 0);
@@ -58,6 +59,8 @@ namespace AmongUsModUpdater
 
             labelVersion.Text = "Among Us Mod Updater Version: " + Application.ProductVersion;
             settingsGamePathTextBox.Text = Properties.Settings.Default.GamePath;
+
+            checkVersionUpdate();
 
             if (Properties.Settings.Default.Backup == true)
             {
@@ -405,6 +408,36 @@ namespace AmongUsModUpdater
         {
             lastPointTmp = new Point(this.Left, this.Top);
             lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void newVersionButton_Click(object sender, EventArgs e)
+        {
+            openLinkInBrowser(newVersionUrl);
+            Application.Exit();
+        }
+
+        private async void checkVersionUpdate()
+        {
+            try
+            {
+                var _request = "https://api.github.com/repos/Narua2010/AmongUsModUpdater/releases/latest";
+                using (HttpClient client = new HttpClient())
+                {
+                    client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("product", "1"));
+                    var response = await client.GetStringAsync(_request);
+                    dynamic json = JsonConvert.DeserializeObject(response);
+
+                    if(Application.ProductVersion != json.tag_name.ToString().Replace("v", ""))
+                    {
+                        newVersionUrl = json.assets[0].browser_download_url;
+                        newVersionButton.Visible = true;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
         }
     }
 }
