@@ -170,6 +170,15 @@ namespace AmongUsModUpdater
             DialogResult response = MessageBox.Show(message, caption, buttons);
             return response;
         }
+        private void openLinkInBrowser(string link)
+        {
+            ProcessStartInfo psInfo = new ProcessStartInfo
+            {
+                FileName = link,
+                UseShellExecute = true
+            };
+            Process.Start(psInfo);
+        }
 
         private void cancelAsyncButton_Click(System.Object sender, System.EventArgs e)
         {
@@ -178,78 +187,6 @@ namespace AmongUsModUpdater
             this.buttonWorkerCancel.Enabled = false;
         }
 
-        private void setInstallationPath()
-        {
-            string path = "";
-            try
-            {
-                var options = new EnumerationOptions()
-                {
-                    IgnoreInaccessible = true,
-                    RecurseSubdirectories = true
-                };
-
-                DriveInfo[] allDrives = DriveInfo.GetDrives();
-                foreach (var drive in allDrives)
-                {
-                    string[] dirs = Directory.GetFiles(drive.Name, @"Among Us.exe", options);
-                    if (dirs.Length > 0)
-                    {
-                        path = dirs[0].Replace("\\Among Us.exe", "");
-                        settingsGamePathTextBox.Text = path;
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-            }
-            if (!string.IsNullOrWhiteSpace(path))
-            {
-                settingsGamePathTextBox.Text = "";
-            }
-            else
-            {
-                openMessageBox("The Among Us.exe could not be found. Please search for it manually or install the game.", "Error");
-                settingsGamePathTextBox.Text = "";
-            }
-        }
-
-        private string gettingInstallationPath()
-        {
-            string path = "";
-            try
-            {
-                var options = new EnumerationOptions()
-                {
-                    IgnoreInaccessible = true,
-                    RecurseSubdirectories = true
-                };
-
-                DriveInfo[] allDrives = DriveInfo.GetDrives();
-                foreach (var drive in allDrives)
-                {
-                    string[] dirs = Directory.GetFiles(drive.Name, @"Among Us.exe", options);
-                    if (dirs.Length > 0)
-                    {
-                        path = dirs[0].Replace("\\Among Us.exe", "");
-                        return path;
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-            }
-
-            if (!string.IsNullOrWhiteSpace(path))
-            {
-                return path;
-            }
-            else
-            {
-                openMessageBox("The Among Us.exe could not be found. Please search for it manually or install the game.", "Error");
-                return null;
-            }
-        }
         private void settingsGamePathTextBox_TextChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(settingsGamePathTextBox.Text))
@@ -454,15 +391,7 @@ namespace AmongUsModUpdater
             }
         }
 
-        private void openLinkInBrowser(string link)
-        {
-            ProcessStartInfo psInfo = new ProcessStartInfo
-            {
-                FileName = link,
-                UseShellExecute = true
-            };
-            Process.Start(psInfo);
-        }
+       
 
         private void panelMenu_MouseUp(object sender, MouseEventArgs e)
         {
