@@ -224,6 +224,11 @@ namespace AmongUsModUpdater
             p.StartInfo.FileName = ex.Argument.ToString();
             p.Start();
             p.WaitForExit();
+            return;
+        }
+        private void backgroundWorkerStart_RunComplete(object sender, RunWorkerCompletedEventArgs ex)
+        {
+            this.waitingInfoForStart.Visible = false;
         }
         private void startGame()
         {
@@ -234,6 +239,7 @@ namespace AmongUsModUpdater
                     var gamePath = Properties.Settings.Default.GamePath + "\\Among Us.exe";
                     BackgroundWorker workerStart = new BackgroundWorker();
                     workerStart.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerStart_DoWork);
+                    workerStart.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerStart_RunComplete);
                     workerStart.RunWorkerAsync(gamePath);
                     downloadProgress.Value = 0;
                     this.waitingInfoForStart.Visible = true;
