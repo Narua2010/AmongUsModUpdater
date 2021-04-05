@@ -34,6 +34,7 @@ namespace AmongUsModUpdater
             this.settingsButton = new System.Windows.Forms.Button();
             this.helpButton = new System.Windows.Forms.Button();
             this.panelHome = new System.Windows.Forms.Panel();
+            this.waitingInfoForStart = new System.Windows.Forms.Label();
             this.buttonHomeUpdate = new CustomButton.CustomButton();
             this.otherRolesBanner = new System.Windows.Forms.PictureBox();
             this.downloadProgress = new System.Windows.Forms.ProgressBar();
@@ -120,6 +121,7 @@ namespace AmongUsModUpdater
             // 
             // panelHome
             // 
+            this.panelHome.Controls.Add(this.waitingInfoForStart);
             this.panelHome.Controls.Add(this.buttonHomeUpdate);
             this.panelHome.Controls.Add(this.otherRolesBanner);
             this.panelHome.Controls.Add(this.downloadProgress);
@@ -132,6 +134,16 @@ namespace AmongUsModUpdater
             this.panelHome.Visible = false;
             this.panelHome.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseDown);
             this.panelHome.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseMove);
+            // 
+            // waitingInfoForStart
+            // 
+            this.waitingInfoForStart.AutoSize = true;
+            this.waitingInfoForStart.Location = new System.Drawing.Point(173, 377);
+            this.waitingInfoForStart.Name = "waitingInfoForStart";
+            this.waitingInfoForStart.Size = new System.Drawing.Size(417, 25);
+            this.waitingInfoForStart.TabIndex = 8;
+            this.waitingInfoForStart.Text = "It takes a little while to start Among Us. Please wait.";
+            this.waitingInfoForStart.Visible = false;
             // 
             // buttonHomeUpdate
             // 
@@ -485,6 +497,7 @@ namespace AmongUsModUpdater
             this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Logo.TabIndex = 0;
             this.Logo.TabStop = false;
+            this.Logo.Click += new System.EventHandler(this.logo_Click);
             this.Logo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseDown);
             this.Logo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseMove);
             // 
@@ -504,13 +517,15 @@ namespace AmongUsModUpdater
             // 
             this.newVersionButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.newVersionButton.Image = ((System.Drawing.Image)(resources.GetObject("newVersionButton.Image")));
-            this.newVersionButton.Location = new System.Drawing.Point(690, 20);
+            this.newVersionButton.Location = new System.Drawing.Point(678, 12);
             this.newVersionButton.Name = "newVersionButton";
-            this.newVersionButton.Size = new System.Drawing.Size(31, 25);
+            this.newVersionButton.Size = new System.Drawing.Size(40, 40);
             this.newVersionButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.newVersionButton.TabIndex = 11;
             this.newVersionButton.TabStop = false;
             this.newVersionButton.Click += new System.EventHandler(this.newVersionButton_Click);
+            this.newVersionButton.MouseLeave += new System.EventHandler(this.newVersionButton_MouseLeave);
+            this.newVersionButton.MouseHover += new System.EventHandler(this.newVersionButton_MouseHover);
             // 
             // buttonExit
             // 
@@ -519,7 +534,7 @@ namespace AmongUsModUpdater
             this.buttonExit.ForeColor = System.Drawing.Color.Silver;
             this.buttonExit.Location = new System.Drawing.Point(724, 12);
             this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(39, 38);
+            this.buttonExit.Size = new System.Drawing.Size(40, 40);
             this.buttonExit.TabIndex = 10;
             this.buttonExit.Text = "X";
             this.buttonExit.UseVisualStyleBackColor = true;
@@ -556,6 +571,7 @@ namespace AmongUsModUpdater
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseMove);
             this.panelHome.ResumeLayout(false);
+            this.panelHome.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.otherRolesBanner)).EndInit();
             this.panelSettings.ResumeLayout(false);
             this.panelSettings.PerformLayout();
@@ -606,6 +622,8 @@ namespace AmongUsModUpdater
         private System.Windows.Forms.ProgressBar progressBarSearch;
         private System.Windows.Forms.Button buttonWorkerCancel;
         private System.Windows.Forms.PictureBox newVersionButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label waitingInfoForStart;
     }
 }
 

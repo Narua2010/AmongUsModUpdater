@@ -222,6 +222,7 @@ namespace AmongUsModUpdater
             {
                 if (checkInstallation())
                 {
+
                     var gamePath = Properties.Settings.Default.GamePath + "\\Among Us.exe";
                     Process p = new Process();
                     p.StartInfo.UseShellExecute = false;
@@ -232,6 +233,7 @@ namespace AmongUsModUpdater
                     string output = p.StandardOutput.ReadToEnd();
                     downloadProgress.Value = 0;
                     p.WaitForExit();
+
                 }
                 else
                 {
@@ -438,6 +440,20 @@ namespace AmongUsModUpdater
             {
 
             }
+        }
+        private void logo_Click(object sender, EventArgs e)
+        {
+            openLinkInBrowser("https://github.com/Narua2010/AmongUsModUpdater");
+        }
+
+        private void newVersionButton_MouseHover(object sender, EventArgs e)
+        {
+            newVersionButton.BackColor = Color.FromArgb(49, 52, 61);
+        }
+
+        private void newVersionButton_MouseLeave(object sender, EventArgs e)
+        {
+            newVersionButton.BackColor = Color.FromArgb(41, 44, 51);
         }
     }
 }
