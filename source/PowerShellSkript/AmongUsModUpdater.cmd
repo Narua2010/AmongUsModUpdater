@@ -1,0 +1,1 @@
+start powershell -ExecutionPolicy Bypass .\update.ps1

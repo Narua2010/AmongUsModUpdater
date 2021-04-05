@@ -1,0 +1,14 @@
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+
+# Editor directories and files
+*.suo
+source/GuiVersion/.vs/*
+*.v2
+source/GuiVersion/.vs/AmongUsModUpdater/v16/.suo
+source/GuiVersion/obj/Release/net5.0-windows/AmongUsModUpdater.csprojAssemblyReference.cache
+/source/GuiVersion/bin/
+/source/GuiVersion/obj/
