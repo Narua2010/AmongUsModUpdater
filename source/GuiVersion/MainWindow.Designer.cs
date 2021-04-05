@@ -36,12 +36,12 @@ namespace AmongUsModUpdater
             this.panelHome = new System.Windows.Forms.Panel();
             this.otherRolesBanner = new System.Windows.Forms.PictureBox();
             this.buttonHomeStart = new CustomButton.CustomButton();
-            this.buttoneHomeUpdate = new CustomButton.CustomButton();
+            this.buttonHomeUpdate = new CustomButton.CustomButton();
             this.downloadProgress = new System.Windows.Forms.ProgressBar();
             this.panelSettings = new System.Windows.Forms.Panel();
             this.buttonWorkerCancel = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.labelProcessedDrives = new System.Windows.Forms.Label();
+            this.progressBarSearch = new System.Windows.Forms.ProgressBar();
             this.settingsButtonAutomated = new CustomButton.CustomButton();
             this.settingButtonManual = new CustomButton.CustomButton();
             this.labelSettingsHeader = new System.Windows.Forms.Label();
@@ -118,10 +118,10 @@ namespace AmongUsModUpdater
             // 
             // panelHome
             // 
+            this.panelHome.Controls.Add(this.buttonHomeUpdate);
             this.panelHome.Controls.Add(this.otherRolesBanner);
-            this.panelHome.Controls.Add(this.buttonHomeStart);
-            this.panelHome.Controls.Add(this.buttoneHomeUpdate);
             this.panelHome.Controls.Add(this.downloadProgress);
+            this.panelHome.Controls.Add(this.buttonHomeStart);
             this.panelHome.Location = new System.Drawing.Point(172, 60);
             this.panelHome.Name = "panelHome";
             this.panelHome.Size = new System.Drawing.Size(528, 372);
@@ -167,28 +167,28 @@ namespace AmongUsModUpdater
             this.buttonHomeStart.Visible = false;
             this.buttonHomeStart.Click += new System.EventHandler(this.buttonHomeStart_Click);
             // 
-            // buttoneHomeUpdate
+            // buttonHomeUpdate
             // 
-            this.buttoneHomeUpdate.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(68)))));
-            this.buttoneHomeUpdate.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(68)))));
-            this.buttoneHomeUpdate.BackColor = System.Drawing.Color.Transparent;
-            this.buttoneHomeUpdate.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttoneHomeUpdate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttoneHomeUpdate.ForeColor = System.Drawing.Color.White;
-            this.buttoneHomeUpdate.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
-            this.buttoneHomeUpdate.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
-            this.buttoneHomeUpdate.Location = new System.Drawing.Point(176, 102);
-            this.buttoneHomeUpdate.Margin = new System.Windows.Forms.Padding(2);
-            this.buttoneHomeUpdate.Name = "buttoneHomeUpdate";
-            this.buttoneHomeUpdate.Radius = 10;
-            this.buttoneHomeUpdate.Size = new System.Drawing.Size(176, 72);
-            this.buttoneHomeUpdate.Stroke = false;
-            this.buttoneHomeUpdate.StrokeColor = System.Drawing.Color.Gray;
-            this.buttoneHomeUpdate.TabIndex = 5;
-            this.buttoneHomeUpdate.Text = "Update";
-            this.buttoneHomeUpdate.Transparency = false;
-            this.buttoneHomeUpdate.Visible = false;
-            this.buttoneHomeUpdate.Click += new System.EventHandler(this.buttoneHomeUpdate_Click);
+            this.buttonHomeUpdate.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(68)))));
+            this.buttonHomeUpdate.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(68)))));
+            this.buttonHomeUpdate.BackColor = System.Drawing.Color.Transparent;
+            this.buttonHomeUpdate.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonHomeUpdate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonHomeUpdate.ForeColor = System.Drawing.Color.White;
+            this.buttonHomeUpdate.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
+            this.buttonHomeUpdate.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
+            this.buttonHomeUpdate.Location = new System.Drawing.Point(176, 102);
+            this.buttonHomeUpdate.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonHomeUpdate.Name = "buttonHomeUpdate";
+            this.buttonHomeUpdate.Radius = 10;
+            this.buttonHomeUpdate.Size = new System.Drawing.Size(176, 72);
+            this.buttonHomeUpdate.Stroke = false;
+            this.buttonHomeUpdate.StrokeColor = System.Drawing.Color.Gray;
+            this.buttonHomeUpdate.TabIndex = 5;
+            this.buttonHomeUpdate.Text = "Update";
+            this.buttonHomeUpdate.Transparency = false;
+            this.buttonHomeUpdate.Visible = false;
+            this.buttonHomeUpdate.Click += new System.EventHandler(this.buttoneHomeUpdate_Click);
             // 
             // downloadProgress
             // 
@@ -202,8 +202,8 @@ namespace AmongUsModUpdater
             // panelSettings
             // 
             this.panelSettings.Controls.Add(this.buttonWorkerCancel);
-            this.panelSettings.Controls.Add(this.label1);
-            this.panelSettings.Controls.Add(this.progressBar1);
+            this.panelSettings.Controls.Add(this.labelProcessedDrives);
+            this.panelSettings.Controls.Add(this.progressBarSearch);
             this.panelSettings.Controls.Add(this.settingsButtonAutomated);
             this.panelSettings.Controls.Add(this.settingButtonManual);
             this.panelSettings.Controls.Add(this.labelSettingsHeader);
@@ -234,24 +234,24 @@ namespace AmongUsModUpdater
             this.buttonWorkerCancel.Visible = false;
             this.buttonWorkerCancel.Click += new System.EventHandler(this.cancelAsyncButton_Click);
             // 
-            // label1
+            // labelProcessedDrives
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 252);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 15);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Processed Drives";
-            this.label1.Visible = false;
+            this.labelProcessedDrives.AutoSize = true;
+            this.labelProcessedDrives.Location = new System.Drawing.Point(32, 252);
+            this.labelProcessedDrives.Name = "labelProcessedDrives";
+            this.labelProcessedDrives.Size = new System.Drawing.Size(95, 15);
+            this.labelProcessedDrives.TabIndex = 9;
+            this.labelProcessedDrives.Text = "Processed Drives";
+            this.labelProcessedDrives.Visible = false;
             // 
-            // progressBar1
+            // progressBarSearch
             // 
-            this.progressBar1.Location = new System.Drawing.Point(32, 226);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(349, 23);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBar1.TabIndex = 8;
-            this.progressBar1.Visible = false;
+            this.progressBarSearch.Location = new System.Drawing.Point(32, 226);
+            this.progressBarSearch.Name = "progressBarSearch";
+            this.progressBarSearch.Size = new System.Drawing.Size(349, 23);
+            this.progressBarSearch.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBarSearch.TabIndex = 8;
+            this.progressBarSearch.Visible = false;
             // 
             // settingsButtonAutomated
             // 
@@ -543,12 +543,12 @@ namespace AmongUsModUpdater
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(700, 332);
-            this.Controls.Add(this.panelSettings);
             this.Controls.Add(this.panelMenuActive);
             this.Controls.Add(this.panelTop);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.panelHome);
             this.Controls.Add(this.panelHelp);
+            this.Controls.Add(this.panelSettings);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.Silver;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -603,10 +603,10 @@ namespace AmongUsModUpdater
         private CustomButton.CustomButton settingsButtonAutomated;
         private System.Windows.Forms.FolderBrowserDialog manualLocationFolderDialog;
         private CustomButton.CustomButton buttonHomeStart;
-        private CustomButton.CustomButton buttoneHomeUpdate;
+        private CustomButton.CustomButton buttonHomeUpdate;
         private System.Windows.Forms.PictureBox otherRolesBanner;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label labelProcessedDrives;
+        private System.Windows.Forms.ProgressBar progressBarSearch;
         private System.Windows.Forms.Button buttonWorkerCancel;
     }
 }

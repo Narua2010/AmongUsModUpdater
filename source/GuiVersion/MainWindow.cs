@@ -1,22 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System;
 using System.ComponentModel;
-using System.Data;
+using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.IO;
+using System.IO.Compression;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using Newtonsoft.Json;
-using Microsoft.Win32;
-using System.ServiceProcess;
-using System.IO;
-using System.IO.Compression;
-using System.Diagnostics;
-using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AmongUsModUpdater
 {
@@ -26,22 +19,44 @@ namespace AmongUsModUpdater
         static string releaseName;
         static string downloadUrl;
         bool configControll = false;
-        private Point lastPointTmp = new Point(0,0);
+        private Point lastPointTmp = new Point(0, 0);
         private Point lastPoint = new Point(0, 0);
-        BackgroundWorker worker = new BackgroundWorker();
+        private FileSearch fileSearch;
+
+        public ProgressBar ProgressBarSearch
+        {
+            get { return progressBarSearch; }
+        }
+
+        public Label LabelProcessedDrives
+        {
+            get { return labelProcessedDrives; }
+        }
+        public Button ButtonWorkerCancel
+        {
+            get { return buttonWorkerCancel; }
+        }
+        public CustomButton.CustomButton SettingsButtonAutomated
+        {
+            get { return settingsButtonAutomated; }
+        }
+        public CustomTextBox.CustomTextBox SettingsGamePathTextBox
+        {
+            get { return settingsGamePathTextBox; }
+        }
 
         public MainWindow()
         {
             InitializeComponent();
 
-            #if DEBUG
-                        Properties.Settings.Default.Backup = false;
-                        Properties.Settings.Default.GamePath = "";
-                        Properties.Settings.Default.OtherModsReleaseId = "";
-                        Properties.Settings.Default.Save();
-            #endif
+#if DEBUG
+            Properties.Settings.Default.Backup = false;
+            Properties.Settings.Default.GamePath = "";
+            Properties.Settings.Default.OtherModsReleaseId = "";
+            Properties.Settings.Default.Save();
+#endif
 
-            labelVersion.Text = "Among Us Mod Updater Version: " +Application.ProductVersion;
+            labelVersion.Text = "Among Us Mod Updater Version: " + Application.ProductVersion;
             settingsGamePathTextBox.Text = Properties.Settings.Default.GamePath;
 
             if (Properties.Settings.Default.Backup == true)
@@ -63,31 +78,33 @@ namespace AmongUsModUpdater
         }
         private void homeButton_Click(object sender, EventArgs e)
         {
-            panelHome.Visible = true;
-            panelSettings.Visible = false;
-            panelHelp.Visible = false;
+            switchPanelVisibility(true, false, false);
 
             panelMenuActive.Height = homeButton.Height;
             panelMenuActive.Top = homeButton.Top;
         }
         private void settingsButton_Click(object sender, EventArgs e)
         {
-            panelHome.Visible = false;
-            panelSettings.Visible = true;
-            panelHelp.Visible = false;
+            switchPanelVisibility(false, true, false);
 
             panelMenuActive.Height = settingsButton.Height;
             panelMenuActive.Top = settingsButton.Top;
         }
         private void helpButton_Click(object sender, EventArgs e)
         {
-            panelHome.Visible = false;
-            panelSettings.Visible = false;
-            panelHelp.Visible = true;
+            switchPanelVisibility(false, false, true);
 
             panelMenuActive.Height = helpButton.Height;
             panelMenuActive.Top = helpButton.Top;
         }
+
+        private void switchPanelVisibility(Boolean home, Boolean settings, Boolean help)
+        {
+            panelHome.Visible = home;
+            panelSettings.Visible = settings;
+            panelHelp.Visible = help;
+        }
+
         private void buttonExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -108,9 +125,9 @@ namespace AmongUsModUpdater
         {
             DialogResult result = manualLocationFolderDialog.ShowDialog();
 
-            if(result == DialogResult.OK && !string.IsNullOrWhiteSpace(manualLocationFolderDialog.SelectedPath))
+            if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(manualLocationFolderDialog.SelectedPath))
             {
-                if(File.Exists(manualLocationFolderDialog.SelectedPath + "\\Among Us.exe"))
+                if (File.Exists(manualLocationFolderDialog.SelectedPath + "\\Among Us.exe"))
                 {
                     settingsGamePathTextBox.Text = manualLocationFolderDialog.SelectedPath;
                 }
@@ -130,202 +147,48 @@ namespace AmongUsModUpdater
         }
         private void settingsButtonAutomated_Click(object sender, EventArgs e)
         {
-            string message = "The automatic search can take longer and cause problems with slow systems. Especially if you have more than two hard drives. If you continue your system might slow down.";
-            string caption = "Attention";
+            DialogResult response = openMessageBoxWithResponse("The automatic search can take longer and cause problems with slow systems. Especially if you have more than two hard drives. If you continue your system might slow down.", "Attention");
+
+            if (response == DialogResult.Yes)
+            {
+                fileSearch = new FileSearch(this);
+                fileSearch.startAsyncWorker();
+            }
+        }        
+
+        private void openMessageBox(string message, string caption)
+        {
+            string messageTmp = message;
+            string captionTmp = caption;
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+            DialogResult response = MessageBox.Show(message, caption, buttons);
+        }
+
+        private DialogResult openMessageBoxWithResponse(string message, string caption)
+        {
+            string messageTmp = message;
+            string captionTmp = caption;
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult response = MessageBox.Show(message, caption, buttons);
-
-            if(response == DialogResult.Yes)
-            {
-                
-                this.progressBar1.Visible = true;
-                this.label1.Visible = true;
-                this.buttonWorkerCancel.Visible = true;
-                this.buttonWorkerCancel.Enabled = true;
-                this.settingsButtonAutomated.Enabled = false;
-
-                worker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-                worker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunComplete);
-                worker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
-                worker.WorkerReportsProgress = true;
-                worker.WorkerSupportsCancellation = true;
-                worker.RunWorkerAsync();
-            }
+            return response;
         }
-
-        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void openLinkInBrowser(string link)
         {
-            ProgressArgument progressArgument = (ProgressArgument)e.UserState;
-            this.label1.Text = "Searching in drive " + progressArgument.count + " of " + progressArgument.allDrivesLength;
-        }
-
-        private void backgroundWorker1_RunComplete(object sender, RunWorkerCompletedEventArgs ex)
-        {
-            if (ex.Cancelled)
+            ProcessStartInfo psInfo = new ProcessStartInfo
             {
-                this.label1.Visible = false;
-                this.progressBar1.Visible = false;
-                this.buttonWorkerCancel.Visible = false;
-                this.settingsButtonAutomated.Enabled = true;
-                this.label1.Text = "Searching in drive ...";
-                worker = new BackgroundWorker();
-                return;
-            }
-            if (ex.Result != null)
-            {
-                this.settingsGamePathTextBox.Text = ex.Result.ToString();
-                worker = new BackgroundWorker();
-            }
-            else
-            {
-                string message = "The Among Us.exe could not be found. Please search for it manually or install the game.";
-                string caption = "Error";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                DialogResult response = MessageBox.Show(message, caption, buttons);
-                this.settingsGamePathTextBox.Text = "";
-                worker = new BackgroundWorker();
-            }
-            this.label1.Visible = false;
-            this.progressBar1.Visible = false;
-            this.buttonWorkerCancel.Visible = false;
-            this.settingsButtonAutomated.Enabled = true;
-            worker = new BackgroundWorker();
-        }
-        public class ProgressArgument
-        {
-            public int count { get; set; }
-            public int allDrivesLength { get; set; }
+                FileName = link,
+                UseShellExecute = true
+            };
+            Process.Start(psInfo);
         }
 
         private void cancelAsyncButton_Click(System.Object sender, System.EventArgs e)
         {
-            // Cancel the asynchronous operation.
-            worker.CancelAsync();
+            fileSearch.cancelAsyncWorker();
 
             this.buttonWorkerCancel.Enabled = false;
         }
 
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs ex)
-        {
-            string path = "";
-            BackgroundWorker worker = sender as BackgroundWorker;
-            ProgressArgument progressArgument = new ProgressArgument();
-            try
-            {
-                var options = new EnumerationOptions()
-                {
-                    IgnoreInaccessible = true,
-                    RecurseSubdirectories = true
-                };
-
-                DriveInfo[] allDrives = DriveInfo.GetDrives();
-                int count = 1;
-                foreach (var drive in allDrives)
-                {
-                    if (worker.CancellationPending)
-                    {
-                        ex.Cancel = true;
-                        return;
-                    }
-                    progressArgument.count = count;
-                    progressArgument.allDrivesLength = allDrives.Length;
-                    worker.ReportProgress(10, progressArgument);
-
-                    string[] dirs = Directory.GetFiles(drive.Name, @"Among Us.exe", options);
-                    if (dirs.Length > 0)
-                    {
-                        path = dirs[0].Replace("\\Among Us.exe", "");
-                        ex.Result = path;
-                        return;
-                    }
-                    count++;
-                }
-            }
-            catch (Exception e)
-            {
-
-            }
-
-        }
-
-        private void setInstallationPath()
-        {
-            string path = "";
-            try
-            {
-                var options = new EnumerationOptions()
-                {
-                    IgnoreInaccessible = true,
-                    RecurseSubdirectories = true
-                };
-
-                DriveInfo[] allDrives = DriveInfo.GetDrives();
-                foreach (var drive in allDrives)
-                {
-                    string[] dirs = Directory.GetFiles(drive.Name, @"Among Us.exe", options);
-                    if (dirs.Length > 0)
-                    {
-                        path = dirs[0].Replace("\\Among Us.exe", "");
-                        settingsGamePathTextBox.Text = path;
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-            }
-            if (!string.IsNullOrWhiteSpace(path))
-            {
-                settingsGamePathTextBox.Text = "";
-            }
-            else
-            {
-                string message = "The Among Us.exe could not be found. Please search for it manually or install the game.";
-                string caption = "Error";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                DialogResult response = MessageBox.Show(message, caption, buttons);
-                settingsGamePathTextBox.Text = "";
-            }
-        }
-
-        private string gettingInstallationPath()
-        {
-            string path = "";
-            try
-            {
-                var options = new EnumerationOptions()
-                {
-                    IgnoreInaccessible = true,
-                    RecurseSubdirectories = true
-                };
-
-                DriveInfo[] allDrives = DriveInfo.GetDrives();
-                foreach (var drive in allDrives)
-                {
-                    string[] dirs = Directory.GetFiles(drive.Name, @"Among Us.exe", options);
-                    if (dirs.Length > 0)
-                    {
-                        path = dirs[0].Replace("\\Among Us.exe", "");
-                        return path;
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-            }
-
-            if (!string.IsNullOrWhiteSpace(path))
-            {
-                return path;
-            }
-            else
-            {
-                string message = "The Among Us.exe could not be found. Please search for it manually or install the game.";
-                string caption = "Error";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                DialogResult response = MessageBox.Show(message, caption, buttons);
-                return null;
-            }
-        }
         private void settingsGamePathTextBox_TextChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(settingsGamePathTextBox.Text))
@@ -339,7 +202,7 @@ namespace AmongUsModUpdater
             if (settingsToggleBackup.IsOn == true)
             {
                 Properties.Settings.Default.Backup = true;
-            } 
+            }
             else
             {
                 Properties.Settings.Default.Backup = false;
@@ -369,18 +232,15 @@ namespace AmongUsModUpdater
                 }
                 else
                 {
-                    buttoneHomeUpdate.Visible = true;
+                    buttonHomeUpdate.Visible = true;
                     buttonHomeStart.Visible = false;
                     downloadProgress.Visible = true;
 
-                    string message = "It looks like the mods are not installed. Do you want to update or install them now?";
-                    string caption = "Error";
-                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                    DialogResult response = MessageBox.Show(message, caption, buttons);
+                    DialogResult response = openMessageBoxWithResponse("It looks like the mods are not installed. Do you want to update or install them now?", "Error");
 
                     if (response == DialogResult.Yes)
                     {
-                        buttoneHomeUpdate.PerformClick();
+                        buttonHomeUpdate.PerformClick();
                     }
                 }
             }
@@ -392,23 +252,20 @@ namespace AmongUsModUpdater
                 if (Properties.Settings.Default.Backup)
                 {
                     if (File.Exists(Properties.Settings.Default.GamePath.Replace("\\Among Us", "") + "\\AmongUsBackup" + DateTime.Now.ToString("yyyyMMdd") + ".zip")) File.Delete(Properties.Settings.Default.GamePath.Replace("\\Among Us", "") + "\\AmongUsBackup" + DateTime.Now.ToString("yyyyMMdd") + ".zip");
-                    ZipFile.CreateFromDirectory(Properties.Settings.Default.GamePath, Properties.Settings.Default.GamePath.Replace("\\Among Us", "") + "\\AmongUsBackup"+ DateTime.Now.ToString("yyyyMMdd") +".zip");
+                    ZipFile.CreateFromDirectory(Properties.Settings.Default.GamePath, Properties.Settings.Default.GamePath.Replace("\\Among Us", "") + "\\AmongUsBackup" + DateTime.Now.ToString("yyyyMMdd") + ".zip");
                 }
                 var check = downloadNewVersion();
             }
             else
-            {
-                string message = "No play path was given. Please enter it under the settings. Would you like to be redirected to the settings?";
-                string caption = "Error";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult response = MessageBox.Show(message, caption, buttons);
+            { 
+                DialogResult response = openMessageBoxWithResponse("No play path was given. Please enter it under the settings. Would you like to be redirected to the settings?", "Error");
 
                 if (response == DialogResult.Yes)
                 {
                     settingsButton.PerformClick();
                 }
             }
-            
+
         }
         private async Task<bool> downloadNewVersion()
         {
@@ -449,18 +306,15 @@ namespace AmongUsModUpdater
                     File.Copy(Properties.Settings.Default.GamePath + "\\com.comando.essentials.cfg", Properties.Settings.Default.GamePath + "\\BepInex\\config\\com.comando.essentials.cfg");
                 }
 
-                
-                buttoneHomeUpdate.Visible = false;
+
+                buttonHomeUpdate.Visible = false;
                 buttonHomeStart.Visible = true;
                 downloadProgress.Visible = false;
 
                 if (File.Exists(Properties.Settings.Default.GamePath + "\\com.comando.essentials.cfg")) File.Delete(Properties.Settings.Default.GamePath + "\\com.comando.essentials.cfg");
                 if (File.Exists(Properties.Settings.Default.GamePath + "\\" + releaseName + ".zip")) File.Delete(Properties.Settings.Default.GamePath + "\\" + releaseName + ".zip");
 
-                string message = "The mod has been successfully updated. Would you like to start the game now?";
-                string caption = "Update finished";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult response = MessageBox.Show(message, caption, buttons);
+                DialogResult response = openMessageBoxWithResponse("The mod has been successfully updated. Would you like to start the game now?", "Update finished");
 
                 if (response == DialogResult.Yes)
                 {
@@ -472,7 +326,7 @@ namespace AmongUsModUpdater
         private void deleteOldFiles()
         {
             string path = Properties.Settings.Default.GamePath;
-            
+
             if (File.Exists(path + "\\BepInex\\config\\com.comando.essentials.cfg"))
             {
                 File.Copy(path + "\\BepInex\\config\\com.comando.essentials.cfg", path + "\\com.comando.essentials.cfg");
@@ -501,13 +355,13 @@ namespace AmongUsModUpdater
                     if (Properties.Settings.Default.OtherModsReleaseId == newReleaseId)
                     {
                         buttonHomeStart.Visible = true;
-                        buttoneHomeUpdate.Visible = false;
+                        buttonHomeUpdate.Visible = false;
                         downloadProgress.Visible = false;
                     }
                     else
                     {
                         buttonHomeStart.Visible = false;
-                        buttoneHomeUpdate.Visible = true;
+                        buttonHomeUpdate.Visible = true;
                         downloadProgress.Visible = true;
                         Properties.Settings.Default.OtherModsReleaseId = newReleaseId;
                         Properties.Settings.Default.Save();
@@ -520,13 +374,13 @@ namespace AmongUsModUpdater
             }
         }
 
-        
+
         private bool checkInstallation()
         {
             string path = Properties.Settings.Default.GamePath;
-            
+
             if (!Directory.Exists(path + "\\mono") || !Directory.Exists(path + "\\BepInex") || !File.Exists(path + "\\winhttp.dll") || !File.Exists(path + "\\steam_appid.txt") || !File.Exists(path + "\\doorstop_config.ini")) return false;
-            
+
             return true;
         }
 
@@ -536,22 +390,12 @@ namespace AmongUsModUpdater
             {
                 this.Left += e.X - lastPoint.X;
                 this.Top += e.Y - lastPoint.Y;
-            } 
-        }
-
-        private void openLinkInBrowser(string link)
-        {
-            ProcessStartInfo psInfo = new ProcessStartInfo
-            {
-                FileName = link,
-                UseShellExecute = true
-            };
-            Process.Start(psInfo);
+            }
         }
 
         private void panelMenu_MouseUp(object sender, MouseEventArgs e)
         {
-            if(new Point(this.Left, this.Top) == lastPointTmp || lastPointTmp == new Point(0,0))
+            if (new Point(this.Left, this.Top) == lastPointTmp || lastPointTmp == new Point(0, 0))
             {
                 openLinkInBrowser("https://github.com/Eisbison/TheOtherRoles");
             }
@@ -560,7 +404,7 @@ namespace AmongUsModUpdater
         private void panelMenu_MouseDown(object sender, MouseEventArgs e)
         {
             lastPointTmp = new Point(this.Left, this.Top);
-            lastPoint = new Point(e.X, e.Y);            
+            lastPoint = new Point(e.X, e.Y);
         }
     }
 }
