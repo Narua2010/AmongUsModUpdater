@@ -11,4 +11,4 @@ The **The Other Roles**, is a mod for Among Us which currently adds 20 additiona
 2. Unzip the folder wherever you want.
 3. Run the setup.exe
 
-It is possible that the antivirus software will complain. In that case, [contact us](https://discord.gg/Jr7x5xdMH2).
+It is possible that the antivirus software will complain. In that case, [contact us](https://discord.gg/csa3pHYdPU).
