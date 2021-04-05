@@ -145,10 +145,7 @@ namespace AmongUsModUpdater
         }
         private void settingsButtonAutomated_Click(object sender, EventArgs e)
         {
-            string message = "The automatic search can take longer and cause problems with slow systems. Especially if you have more than two hard drives. If you continue your system might slow down.";
-            string caption = "Attention";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult response = MessageBox.Show(message, caption, buttons);
+            DialogResult response = openMessageBoxWithResponse("The automatic search can take longer and cause problems with slow systems. Especially if you have more than two hard drives. If you continue your system might slow down.", "Attention");
 
             if (response == DialogResult.Yes)
             {
@@ -156,6 +153,23 @@ namespace AmongUsModUpdater
                 fileSearch.startAsyncWorker();
             }
         }        
+
+        private void openMessageBox(string message, string caption)
+        {
+            string messageTmp = message;
+            string captionTmp = caption;
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+            DialogResult response = MessageBox.Show(message, caption, buttons);
+        }
+
+        private DialogResult openMessageBoxWithResponse(string message, string caption)
+        {
+            string messageTmp = message;
+            string captionTmp = caption;
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult response = MessageBox.Show(message, caption, buttons);
+            return response;
+        }
 
         private void cancelAsyncButton_Click(System.Object sender, System.EventArgs e)
         {
@@ -195,10 +209,7 @@ namespace AmongUsModUpdater
             }
             else
             {
-                string message = "The Among Us.exe could not be found. Please search for it manually or install the game.";
-                string caption = "Error";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                DialogResult response = MessageBox.Show(message, caption, buttons);
+                openMessageBox("The Among Us.exe could not be found. Please search for it manually or install the game.", "Error");
                 settingsGamePathTextBox.Text = "";
             }
         }
@@ -235,10 +246,7 @@ namespace AmongUsModUpdater
             }
             else
             {
-                string message = "The Among Us.exe could not be found. Please search for it manually or install the game.";
-                string caption = "Error";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                DialogResult response = MessageBox.Show(message, caption, buttons);
+                openMessageBox("The Among Us.exe could not be found. Please search for it manually or install the game.", "Error");
                 return null;
             }
         }
@@ -289,10 +297,7 @@ namespace AmongUsModUpdater
                     buttonHomeStart.Visible = false;
                     downloadProgress.Visible = true;
 
-                    string message = "It looks like the mods are not installed. Do you want to update or install them now?";
-                    string caption = "Error";
-                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                    DialogResult response = MessageBox.Show(message, caption, buttons);
+                    DialogResult response = openMessageBoxWithResponse("It looks like the mods are not installed. Do you want to update or install them now?", "Error");
 
                     if (response == DialogResult.Yes)
                     {
@@ -313,11 +318,8 @@ namespace AmongUsModUpdater
                 var check = downloadNewVersion();
             }
             else
-            {
-                string message = "No play path was given. Please enter it under the settings. Would you like to be redirected to the settings?";
-                string caption = "Error";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult response = MessageBox.Show(message, caption, buttons);
+            { 
+                DialogResult response = openMessageBoxWithResponse("No play path was given. Please enter it under the settings. Would you like to be redirected to the settings?", "Error");
 
                 if (response == DialogResult.Yes)
                 {
@@ -373,10 +375,7 @@ namespace AmongUsModUpdater
                 if (File.Exists(Properties.Settings.Default.GamePath + "\\com.comando.essentials.cfg")) File.Delete(Properties.Settings.Default.GamePath + "\\com.comando.essentials.cfg");
                 if (File.Exists(Properties.Settings.Default.GamePath + "\\" + releaseName + ".zip")) File.Delete(Properties.Settings.Default.GamePath + "\\" + releaseName + ".zip");
 
-                string message = "The mod has been successfully updated. Would you like to start the game now?";
-                string caption = "Update finished";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult response = MessageBox.Show(message, caption, buttons);
+                DialogResult response = openMessageBoxWithResponse("The mod has been successfully updated. Would you like to start the game now?", "Update finished");
 
                 if (response == DialogResult.Yes)
                 {
