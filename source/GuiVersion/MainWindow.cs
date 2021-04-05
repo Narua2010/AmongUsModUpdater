@@ -293,7 +293,7 @@ namespace AmongUsModUpdater
                 }
                 else
                 {
-                    buttoneHomeUpdate.Visible = true;
+                    buttonHomeUpdate.Visible = true;
                     buttonHomeStart.Visible = false;
                     downloadProgress.Visible = true;
 
@@ -301,7 +301,7 @@ namespace AmongUsModUpdater
 
                     if (response == DialogResult.Yes)
                     {
-                        buttoneHomeUpdate.PerformClick();
+                        buttonHomeUpdate.PerformClick();
                     }
                 }
             }
@@ -368,7 +368,7 @@ namespace AmongUsModUpdater
                 }
 
 
-                buttoneHomeUpdate.Visible = false;
+                buttonHomeUpdate.Visible = false;
                 buttonHomeStart.Visible = true;
                 downloadProgress.Visible = false;
 
@@ -416,13 +416,13 @@ namespace AmongUsModUpdater
                     if (Properties.Settings.Default.OtherModsReleaseId == newReleaseId)
                     {
                         buttonHomeStart.Visible = true;
-                        buttoneHomeUpdate.Visible = false;
+                        buttonHomeUpdate.Visible = false;
                         downloadProgress.Visible = false;
                     }
                     else
                     {
                         buttonHomeStart.Visible = false;
-                        buttoneHomeUpdate.Visible = true;
+                        buttonHomeUpdate.Visible = true;
                         downloadProgress.Visible = true;
                         Properties.Settings.Default.OtherModsReleaseId = newReleaseId;
                         Properties.Settings.Default.Save();
