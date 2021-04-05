@@ -216,24 +216,27 @@ namespace AmongUsModUpdater
         {
             startGame();
         }
+        private void backgroundWorkerStart_DoWork(object sender, DoWorkEventArgs ex)
+        {
+            Process p = new Process();
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardOutput = true;
+            p.StartInfo.FileName = ex.Argument.ToString();
+            p.Start();
+            p.WaitForExit();
+        }
         private void startGame()
         {
             if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.GamePath))
             {
                 if (checkInstallation())
                 {
-
                     var gamePath = Properties.Settings.Default.GamePath + "\\Among Us.exe";
-                    Process p = new Process();
-                    p.StartInfo.UseShellExecute = false;
-                    p.StartInfo.RedirectStandardOutput = true;
-                    p.StartInfo.FileName = gamePath;
-                    p.Start();
-
-                    string output = p.StandardOutput.ReadToEnd();
+                    BackgroundWorker workerStart = new BackgroundWorker();
+                    workerStart.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerStart_DoWork);
+                    workerStart.RunWorkerAsync(gamePath);
                     downloadProgress.Value = 0;
-                    p.WaitForExit();
-
+                    this.waitingInfoForStart.Visible = true;
                 }
                 else
                 {
