@@ -78,31 +78,33 @@ namespace AmongUsModUpdater
         }
         private void homeButton_Click(object sender, EventArgs e)
         {
-            panelHome.Visible = true;
-            panelSettings.Visible = false;
-            panelHelp.Visible = false;
+            switchPanelVisibility(true, false, false);
 
             panelMenuActive.Height = homeButton.Height;
             panelMenuActive.Top = homeButton.Top;
         }
         private void settingsButton_Click(object sender, EventArgs e)
         {
-            panelHome.Visible = false;
-            panelSettings.Visible = true;
-            panelHelp.Visible = false;
+            switchPanelVisibility(false, true, false);
 
             panelMenuActive.Height = settingsButton.Height;
             panelMenuActive.Top = settingsButton.Top;
         }
         private void helpButton_Click(object sender, EventArgs e)
         {
-            panelHome.Visible = false;
-            panelSettings.Visible = false;
-            panelHelp.Visible = true;
+            switchPanelVisibility(false, false, true);
 
             panelMenuActive.Height = helpButton.Height;
             panelMenuActive.Top = helpButton.Top;
         }
+
+        private void switchPanelVisibility(Boolean home, Boolean settings, Boolean help)
+        {
+            panelHome.Visible = home;
+            panelSettings.Visible = settings;
+            panelHelp.Visible = help;
+        }
+
         private void buttonExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -390,8 +392,6 @@ namespace AmongUsModUpdater
                 this.Top += e.Y - lastPoint.Y;
             }
         }
-
-       
 
         private void panelMenu_MouseUp(object sender, MouseEventArgs e)
         {
