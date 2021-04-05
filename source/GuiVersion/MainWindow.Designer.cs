@@ -40,8 +40,8 @@ namespace AmongUsModUpdater
             this.downloadProgress = new System.Windows.Forms.ProgressBar();
             this.panelSettings = new System.Windows.Forms.Panel();
             this.buttonWorkerCancel = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.labelProcessedDrives = new System.Windows.Forms.Label();
+            this.progressBarSearch = new System.Windows.Forms.ProgressBar();
             this.settingsButtonAutomated = new CustomButton.CustomButton();
             this.settingButtonManual = new CustomButton.CustomButton();
             this.labelSettingsHeader = new System.Windows.Forms.Label();
@@ -202,8 +202,8 @@ namespace AmongUsModUpdater
             // panelSettings
             // 
             this.panelSettings.Controls.Add(this.buttonWorkerCancel);
-            this.panelSettings.Controls.Add(this.label1);
-            this.panelSettings.Controls.Add(this.progressBar1);
+            this.panelSettings.Controls.Add(this.labelProcessedDrives);
+            this.panelSettings.Controls.Add(this.progressBarSearch);
             this.panelSettings.Controls.Add(this.settingsButtonAutomated);
             this.panelSettings.Controls.Add(this.settingButtonManual);
             this.panelSettings.Controls.Add(this.labelSettingsHeader);
@@ -234,24 +234,24 @@ namespace AmongUsModUpdater
             this.buttonWorkerCancel.Visible = false;
             this.buttonWorkerCancel.Click += new System.EventHandler(this.cancelAsyncButton_Click);
             // 
-            // label1
+            // labelProcessedDrives
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 252);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 15);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Processed Drives";
-            this.label1.Visible = false;
+            this.labelProcessedDrives.AutoSize = true;
+            this.labelProcessedDrives.Location = new System.Drawing.Point(32, 252);
+            this.labelProcessedDrives.Name = "labelProcessedDrives";
+            this.labelProcessedDrives.Size = new System.Drawing.Size(95, 15);
+            this.labelProcessedDrives.TabIndex = 9;
+            this.labelProcessedDrives.Text = "Processed Drives";
+            this.labelProcessedDrives.Visible = false;
             // 
-            // progressBar1
+            // progressBarSearch
             // 
-            this.progressBar1.Location = new System.Drawing.Point(32, 226);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(349, 23);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBar1.TabIndex = 8;
-            this.progressBar1.Visible = false;
+            this.progressBarSearch.Location = new System.Drawing.Point(32, 226);
+            this.progressBarSearch.Name = "progressBarSearch";
+            this.progressBarSearch.Size = new System.Drawing.Size(349, 23);
+            this.progressBarSearch.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBarSearch.TabIndex = 8;
+            this.progressBarSearch.Visible = false;
             // 
             // settingsButtonAutomated
             // 
@@ -605,8 +605,8 @@ namespace AmongUsModUpdater
         private CustomButton.CustomButton buttonHomeStart;
         private CustomButton.CustomButton buttoneHomeUpdate;
         private System.Windows.Forms.PictureBox otherRolesBanner;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label labelProcessedDrives;
+        private System.Windows.Forms.ProgressBar progressBarSearch;
         private System.Windows.Forms.Button buttonWorkerCancel;
     }
 }
