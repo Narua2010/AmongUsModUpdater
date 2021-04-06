@@ -317,7 +317,7 @@ namespace AmongUsModUpdater
 
                 if (configControll)
                 {
-                    File.Copy(Properties.Settings.Default.GamePath + "\\com.comando.essentials.cfg", Properties.Settings.Default.GamePath + "\\BepInex\\config\\com.comando.essentials.cfg");
+                    File.Copy(Properties.Settings.Default.GamePath + "\\me.eisbison.theotherroles.cfg", Properties.Settings.Default.GamePath + "\\BepInex\\config\\me.eisbison.theotherroles.cfg");
                 }
 
 
@@ -325,7 +325,7 @@ namespace AmongUsModUpdater
                 buttonHomeStart.Visible = true;
                 downloadProgress.Visible = false;
 
-                if (File.Exists(Properties.Settings.Default.GamePath + "\\com.comando.essentials.cfg")) File.Delete(Properties.Settings.Default.GamePath + "\\com.comando.essentials.cfg");
+                if (File.Exists(Properties.Settings.Default.GamePath + "\\me.eisbison.theotherroles.cfg")) File.Delete(Properties.Settings.Default.GamePath + "\\me.eisbison.theotherroles.cfg");
                 if (File.Exists(Properties.Settings.Default.GamePath + "\\" + releaseName + ".zip")) File.Delete(Properties.Settings.Default.GamePath + "\\" + releaseName + ".zip");
 
                 DialogResult response = openMessageBoxWithResponse("The mod has been successfully updated. Would you like to start the game now?", "Update finished");
@@ -341,9 +341,9 @@ namespace AmongUsModUpdater
         {
             string path = Properties.Settings.Default.GamePath;
 
-            if (File.Exists(path + "\\BepInex\\config\\com.comando.essentials.cfg"))
+            if (File.Exists(path + "\\BepInex\\config\\me.eisbison.theotherroles.cfg"))
             {
-                File.Copy(path + "\\BepInex\\config\\com.comando.essentials.cfg", path + "\\com.comando.essentials.cfg");
+                File.Copy(path + "\\BepInex\\config\\me.eisbison.theotherroles.cfg", path + "\\me.eisbison.theotherroles.cfg");
                 configControll = true;
             }
 
