@@ -13,3 +13,5 @@ The **The Other Roles**, is a mod for Among Us which currently adds 20 additiona
 4. The program is then started each time via AmongUsModUpdater.exe.
 
 It is possible that the antivirus software will complain. In that case, [contact us](https://discord.gg/csa3pHYdPU).
+
+Some of you experience a problem after installation with the setup.exe. Please close the application and restart it. We are investigating the issue.
