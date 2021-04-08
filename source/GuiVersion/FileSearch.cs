@@ -116,7 +116,7 @@ namespace AmongUsModUpdater
             }
             catch (Exception e)
             {
-
+                Logger.Log(null, e);
             }
 
         }

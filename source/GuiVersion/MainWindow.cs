@@ -49,7 +49,7 @@ namespace AmongUsModUpdater
         public MainWindow()
         {
             InitializeComponent();
-
+            Logger.Log("Init", null);
 #if DEBUG
             Properties.Settings.Default.Backup = false;
             Properties.Settings.Default.GamePath = "";
@@ -306,15 +306,16 @@ namespace AmongUsModUpdater
             }
             catch (Exception e)
             {
-
+                Logger.Log(null, e);
             }
             finally
             {
-                deleteOldFiles();
-
+                var _tmp = await deleteOldFiles();
                 var zipPath = Properties.Settings.Default.GamePath + "\\" + releaseName + ".zip";
+                Logger.Log(zipPath, null);
                 ZipFile.ExtractToDirectory(zipPath, Properties.Settings.Default.GamePath);
 
+                Logger.Log(configControll.ToString(), null);
                 if (configControll)
                 {
                     File.Copy(Properties.Settings.Default.GamePath + "\\me.eisbison.theotherroles.cfg", Properties.Settings.Default.GamePath + "\\BepInex\\config\\me.eisbison.theotherroles.cfg");
@@ -337,7 +338,7 @@ namespace AmongUsModUpdater
             }
             return true;
         }
-        private void deleteOldFiles()
+        private async Task<bool> deleteOldFiles()
         {
             string path = Properties.Settings.Default.GamePath;
 
@@ -352,6 +353,8 @@ namespace AmongUsModUpdater
             if (File.Exists(path + "\\winhttp.dll")) File.Delete(path + "\\winhttp.dll");
             if (File.Exists(path + "\\steam_appid.txt")) File.Delete(path + "\\steam_appid.txt");
             if (File.Exists(path + "\\doorstop_config.ini")) File.Delete(path + "\\doorstop_config.ini");
+
+            return true;
         }
         private async void getOtherRoles()
         {
@@ -384,7 +387,7 @@ namespace AmongUsModUpdater
             }
             catch (Exception e)
             {
-
+                Logger.Log(null, e);
             }
         }
 
@@ -447,7 +450,7 @@ namespace AmongUsModUpdater
             }
             catch (Exception e)
             {
-
+                Logger.Log(null, e);
             }
         }
         private void logo_Click(object sender, EventArgs e)
@@ -464,5 +467,8 @@ namespace AmongUsModUpdater
         {
             newVersionButton.BackColor = Color.FromArgb(41, 44, 51);
         }
+
+
+        
     }
 }
