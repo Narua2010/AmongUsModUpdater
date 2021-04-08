@@ -12,4 +12,4 @@ The **The Other Roles**, is a mod for Among Us which currently adds 20 additiona
 3. Run the setup.exe.
 4. The program is then started each time via desktop shortcut.
 
-It is possible that the antivirus software will complain. In that case, [contact us](https://discord.gg/csa3pHYdPU).
+After the update to 2.1.1 you have to set the installation path again. It is possible that the antivirus software will complain. In that case, [contact us](https://discord.gg/csa3pHYdPU).
