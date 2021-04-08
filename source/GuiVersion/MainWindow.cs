@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace AmongUsModUpdater
 {
@@ -315,12 +316,33 @@ namespace AmongUsModUpdater
                 Logger.Log(zipPath, null);
                 ZipFile.ExtractToDirectory(zipPath, Properties.Settings.Default.GamePath);
 
-                Logger.Log(configControll.ToString(), null);
+                if (!Directory.Exists(Properties.Settings.Default.GamePath + "\\BepInex\\config"))
+                {
+                    Logger.Log("Config is missing (z321)");
+                    Directory.CreateDirectory(Properties.Settings.Default.GamePath + "\\BepInex\\config");
+                    Logger.Log("Config was create (z323)");
+                }
+                Logger.Log(configControll.ToString() +"(z319)", null);
                 if (configControll)
                 {
-                    File.Copy(Properties.Settings.Default.GamePath + "\\me.eisbison.theotherroles.cfg", Properties.Settings.Default.GamePath + "\\BepInex\\config\\me.eisbison.theotherroles.cfg");
+                    Logger.Log("Z322");
+                    var _tmpCheck = false;
+                    do
+                    {
+                        if (File.Exists(Properties.Settings.Default.GamePath + "\\me.eisbison.theotherroles.cfg"))
+                        {
+                            File.Copy(Properties.Settings.Default.GamePath + "\\me.eisbison.theotherroles.cfg", Properties.Settings.Default.GamePath + "\\BepInex\\config\\me.eisbison.theotherroles.cfg", true);
+                            _tmpCheck = true;
+                            Logger.Log("File copy successed (z329)", null);
+                        }
+                        else
+                        {
+                            Logger.Log("Waiting for copy (z333)", null);
+                            Thread.Sleep(100);
+                        }
+                    } while (!_tmpCheck);
                 }
-
+                Logger.Log("Leave File copy (z338)", null);
 
                 buttonHomeUpdate.Visible = false;
                 buttonHomeStart.Visible = true;
@@ -344,7 +366,7 @@ namespace AmongUsModUpdater
 
             if (File.Exists(path + "\\BepInex\\config\\me.eisbison.theotherroles.cfg"))
             {
-                File.Copy(path + "\\BepInex\\config\\me.eisbison.theotherroles.cfg", path + "\\me.eisbison.theotherroles.cfg");
+                File.Copy(path + "\\BepInex\\config\\me.eisbison.theotherroles.cfg", path + "\\me.eisbison.theotherroles.cfg", true);
                 configControll = true;
             }
 
