@@ -7,7 +7,7 @@ The **The Other Roles**, is a mod for Among Us which currently adds 20 additiona
 
 ## Installation
 
-1. Download and unzip the [AmongUsModUpdater.zip](https://github.com/Narua2010/AmongUsModUpdater/releases/download/v2.1.0/AmongUsModUpdater.zip).
+1. Download and unzip the [AmongUsModUpdater.zip](https://github.com/Narua2010/AmongUsModUpdater/releases/download/v2.1.1/AmongUsModUpdater.zip).
 2. Unzip the folder wherever you want.
 3. Run the setup.exe.
 4. The program is then started each time via desktop shortcut.
