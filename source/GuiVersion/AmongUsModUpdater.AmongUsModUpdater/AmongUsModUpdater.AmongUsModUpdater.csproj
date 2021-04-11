@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AmongUsModUpdater.ModFunctions\AmongUsModUpdater.UpdaterFunctions.csproj" />
+    <ProjectReference Include="..\WinForms.Logger\WinForms.Logger.csproj" />
+  </ItemGroup>
+
+</Project>

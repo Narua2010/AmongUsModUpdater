@@ -1,0 +1,12 @@
+D:\Github\AmongUsModUpdater\source\GuiVersion\WinForms.Logger\bin\Debug\net5.0-windows\WinForms.Logger.deps.json
+D:\Github\AmongUsModUpdater\source\GuiVersion\WinForms.Logger\bin\Debug\net5.0-windows\WinForms.Logger.dll
+D:\Github\AmongUsModUpdater\source\GuiVersion\WinForms.Logger\bin\Debug\net5.0-windows\ref\WinForms.Logger.dll
+D:\Github\AmongUsModUpdater\source\GuiVersion\WinForms.Logger\bin\Debug\net5.0-windows\WinForms.Logger.pdb
+D:\Github\AmongUsModUpdater\source\GuiVersion\WinForms.Logger\obj\Debug\net5.0-windows\WinForms.Logger.csprojAssemblyReference.cache
+D:\Github\AmongUsModUpdater\source\GuiVersion\WinForms.Logger\obj\Debug\net5.0-windows\WinForms.Logger.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github\AmongUsModUpdater\source\GuiVersion\WinForms.Logger\obj\Debug\net5.0-windows\WinForms.Logger.AssemblyInfoInputs.cache
+D:\Github\AmongUsModUpdater\source\GuiVersion\WinForms.Logger\obj\Debug\net5.0-windows\WinForms.Logger.AssemblyInfo.cs
+D:\Github\AmongUsModUpdater\source\GuiVersion\WinForms.Logger\obj\Debug\net5.0-windows\WinForms.Logger.csproj.CoreCompileInputs.cache
+D:\Github\AmongUsModUpdater\source\GuiVersion\WinForms.Logger\obj\Debug\net5.0-windows\WinForms.Logger.dll
+D:\Github\AmongUsModUpdater\source\GuiVersion\WinForms.Logger\obj\Debug\net5.0-windows\ref\WinForms.Logger.dll
+D:\Github\AmongUsModUpdater\source\GuiVersion\WinForms.Logger\obj\Debug\net5.0-windows\WinForms.Logger.pdb

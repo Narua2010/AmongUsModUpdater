@@ -1,0 +1,8 @@
+D:\Deploy\AmongUsModUpdater\AmongUsModUpdater.exe
+D:\Deploy\AmongUsModUpdater\AmongUsModUpdater.dll
+D:\Deploy\AmongUsModUpdater\AmongUsModUpdater.deps.json
+D:\Deploy\AmongUsModUpdater\AmongUsModUpdater.runtimeconfig.json
+D:\Deploy\AmongUsModUpdater\AmongUsModUpdater.pdb
+D:\Deploy\AmongUsModUpdater\Newtonsoft.Json.dll
+D:\Deploy\AmongUsModUpdater\NLog.dll
+D:\Deploy\AmongUsModUpdater\NLog.Windows.Forms.dll

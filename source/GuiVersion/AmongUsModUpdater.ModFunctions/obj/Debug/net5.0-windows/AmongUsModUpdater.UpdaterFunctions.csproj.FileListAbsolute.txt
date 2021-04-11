@@ -1,0 +1,15 @@
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.ModFunctions\bin\Debug\net5.0-windows\WinForms.Logger.dll
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.ModFunctions\obj\Debug\net5.0-windows\AmongUsModUpdater.UpdaterFunctions.csprojAssemblyReference.cache
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.ModFunctions\obj\Debug\net5.0-windows\AmongUsModUpdater.UpdaterFunctions.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.ModFunctions\obj\Debug\net5.0-windows\AmongUsModUpdater.UpdaterFunctions.AssemblyInfoInputs.cache
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.ModFunctions\obj\Debug\net5.0-windows\AmongUsModUpdater.UpdaterFunctions.AssemblyInfo.cs
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.ModFunctions\bin\Debug\net5.0-windows\AmongUsModUpdater.UpdaterFunctions.deps.json
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.ModFunctions\bin\Debug\net5.0-windows\AmongUsModUpdater.UpdaterFunctions.dll
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.ModFunctions\bin\Debug\net5.0-windows\ref\AmongUsModUpdater.UpdaterFunctions.dll
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.ModFunctions\bin\Debug\net5.0-windows\AmongUsModUpdater.UpdaterFunctions.pdb
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.ModFunctions\bin\Debug\net5.0-windows\WinForms.Logger.pdb
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.ModFunctions\obj\Debug\net5.0-windows\AmongUsModUpdater.UpdaterFunctions.csproj.CoreCompileInputs.cache
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.ModFunctions\obj\Debug\net5.0-windows\AmongUsModUpdater.UpdaterFunctions.csproj.CopyComplete
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.ModFunctions\obj\Debug\net5.0-windows\AmongUsModUpdater.UpdaterFunctions.dll
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.ModFunctions\obj\Debug\net5.0-windows\ref\AmongUsModUpdater.UpdaterFunctions.dll
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.ModFunctions\obj\Debug\net5.0-windows\AmongUsModUpdater.UpdaterFunctions.pdb

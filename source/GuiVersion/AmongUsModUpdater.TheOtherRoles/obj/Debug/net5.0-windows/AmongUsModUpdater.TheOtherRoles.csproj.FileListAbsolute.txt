@@ -1,0 +1,17 @@
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.TheOtherRoles\bin\Debug\net5.0-windows\AmongUsModUpdater.TheOtherRoles.deps.json
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.TheOtherRoles\bin\Debug\net5.0-windows\AmongUsModUpdater.TheOtherRoles.dll
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.TheOtherRoles\bin\Debug\net5.0-windows\ref\AmongUsModUpdater.TheOtherRoles.dll
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.TheOtherRoles\bin\Debug\net5.0-windows\AmongUsModUpdater.TheOtherRoles.pdb
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.TheOtherRoles\bin\Debug\net5.0-windows\AmongUsModUpdater.UpdaterFunctions.dll
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.TheOtherRoles\bin\Debug\net5.0-windows\WinForms.Logger.dll
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.TheOtherRoles\bin\Debug\net5.0-windows\AmongUsModUpdater.UpdaterFunctions.pdb
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.TheOtherRoles\bin\Debug\net5.0-windows\WinForms.Logger.pdb
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.TheOtherRoles\obj\Debug\net5.0-windows\AmongUsModUpdater.TheOtherRoles.csprojAssemblyReference.cache
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.TheOtherRoles\obj\Debug\net5.0-windows\AmongUsModUpdater.TheOtherRoles.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.TheOtherRoles\obj\Debug\net5.0-windows\AmongUsModUpdater.TheOtherRoles.AssemblyInfoInputs.cache
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.TheOtherRoles\obj\Debug\net5.0-windows\AmongUsModUpdater.TheOtherRoles.AssemblyInfo.cs
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.TheOtherRoles\obj\Debug\net5.0-windows\AmongUsModUpdater.TheOtherRoles.csproj.CoreCompileInputs.cache
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.TheOtherRoles\obj\Debug\net5.0-windows\AmongUsModUpdater.TheOtherRoles.csproj.CopyComplete
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.TheOtherRoles\obj\Debug\net5.0-windows\AmongUsModUpdater.TheOtherRoles.dll
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.TheOtherRoles\obj\Debug\net5.0-windows\ref\AmongUsModUpdater.TheOtherRoles.dll
+D:\Github\AmongUsModUpdater\source\GuiVersion\AmongUsModUpdater.TheOtherRoles\obj\Debug\net5.0-windows\AmongUsModUpdater.TheOtherRoles.pdb

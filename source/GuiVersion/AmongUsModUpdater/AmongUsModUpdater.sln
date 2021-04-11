@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmongUsModUpdater", "AmongUsModUpdater.csproj", "{52394636-D5FB-474F-B5F1-424BEB4306A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinForms.Logger", "..\WinForms.Logger\WinForms.Logger.csproj", "{6BBA8690-D280-4E34-9D9A-B5E6396DDDC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmongUsModUpdater.TheOtherRoles", "..\AmongUsModUpdater.TheOtherRoles\AmongUsModUpdater.TheOtherRoles.csproj", "{54E21662-E535-44BA-9B70-DC4723B93DBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmongUsModUpdater.UpdaterFunctions", "..\AmongUsModUpdater.ModFunctions\AmongUsModUpdater.UpdaterFunctions.csproj", "{55068365-CDAE-4735-8B1A-E1856CC1ACDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmongUsModUpdater.AmongUsModUpdater", "..\AmongUsModUpdater.AmongUsModUpdater\AmongUsModUpdater.AmongUsModUpdater.csproj", "{712698DE-BDD2-4C00-B820-A5092DC223AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52394636-D5FB-474F-B5F1-424BEB4306A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52394636-D5FB-474F-B5F1-424BEB4306A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52394636-D5FB-474F-B5F1-424BEB4306A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52394636-D5FB-474F-B5F1-424BEB4306A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BBA8690-D280-4E34-9D9A-B5E6396DDDC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BBA8690-D280-4E34-9D9A-B5E6396DDDC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BBA8690-D280-4E34-9D9A-B5E6396DDDC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BBA8690-D280-4E34-9D9A-B5E6396DDDC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54E21662-E535-44BA-9B70-DC4723B93DBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54E21662-E535-44BA-9B70-DC4723B93DBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54E21662-E535-44BA-9B70-DC4723B93DBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54E21662-E535-44BA-9B70-DC4723B93DBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55068365-CDAE-4735-8B1A-E1856CC1ACDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55068365-CDAE-4735-8B1A-E1856CC1ACDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55068365-CDAE-4735-8B1A-E1856CC1ACDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55068365-CDAE-4735-8B1A-E1856CC1ACDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{712698DE-BDD2-4C00-B820-A5092DC223AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{712698DE-BDD2-4C00-B820-A5092DC223AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{712698DE-BDD2-4C00-B820-A5092DC223AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{712698DE-BDD2-4C00-B820-A5092DC223AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C8E920ED-5A22-452D-B1C1-58FA131B10EB}
+	EndGlobalSection
+EndGlobal
