@@ -112,12 +112,12 @@ namespace AmongUsModUpdater
         }
         private void newVersionButton_MouseHover(object sender, EventArgs e)
         {
-            buttonNewVersion.BackColor = Color.FromArgb(49, 52, 61);
+            newVersionButton.BackColor = Color.FromArgb(49, 52, 61);
         }
 
         private void newVersionButton_MouseLeave(object sender, EventArgs e)
         {
-            buttonNewVersion.BackColor = Color.FromArgb(41, 44, 51);
+            newVersionButton.BackColor = Color.FromArgb(41, 44, 51);
         }
         private void logo_Click(object sender, EventArgs e)
         {

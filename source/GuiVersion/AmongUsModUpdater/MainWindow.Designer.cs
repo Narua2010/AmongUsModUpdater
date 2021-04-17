@@ -63,7 +63,7 @@ namespace AmongUsModUpdater
             this.panelLogo = new System.Windows.Forms.Panel();
             this.Logo = new System.Windows.Forms.PictureBox();
             this.panelTop = new System.Windows.Forms.Panel();
-            this.buttonNewVersion = new CustomButton.CustomButton();
+            this.newVersionButton = new CustomButton.CustomButton();
             this.buttonExit = new System.Windows.Forms.Button();
             this.panelMenuActive = new System.Windows.Forms.Panel();
             this.manualLocationFolderDialog = new System.Windows.Forms.FolderBrowserDialog();
@@ -543,7 +543,7 @@ namespace AmongUsModUpdater
             // 
             // panelTop
             // 
-            this.panelTop.Controls.Add(this.buttonNewVersion);
+            this.panelTop.Controls.Add(this.newVersionButton);
             this.panelTop.Controls.Add(this.buttonExit);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(158, 0);
@@ -554,19 +554,19 @@ namespace AmongUsModUpdater
             this.panelTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseDown);
             this.panelTop.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseMove);
             // 
-            // buttonNewVersion
+            // newVersionButton
             // 
-            this.buttonNewVersion.BackColor = System.Drawing.Color.Transparent;
-            this.buttonNewVersion.ForeColor = System.Drawing.Color.White;
-            this.buttonNewVersion.Location = new System.Drawing.Point(361, 7);
-            this.buttonNewVersion.Name = "buttonNewVersion";
-            this.buttonNewVersion.Size = new System.Drawing.Size(144, 23);
-            this.buttonNewVersion.TabIndex = 11;
-            this.buttonNewVersion.Text = "New Updater Version";
-            //this.buttonNewVersion.UseVisualStyleBackColor = false;
-            this.buttonNewVersion.Click += new System.EventHandler(this.newVersionButton_Click);
-            this.buttonNewVersion.Enter += new System.EventHandler(this.newVersionButton_MouseHover);
-            this.buttonNewVersion.Leave += new System.EventHandler(this.newVersionButton_MouseLeave);
+            this.newVersionButton.BackColor = System.Drawing.Color.Transparent;
+            this.newVersionButton.ForeColor = System.Drawing.Color.White;
+            this.newVersionButton.Location = new System.Drawing.Point(361, 7);
+            this.newVersionButton.Name = "newVersionButton";
+            this.newVersionButton.Size = new System.Drawing.Size(144, 23);
+            this.newVersionButton.TabIndex = 11;
+            this.newVersionButton.Text = "New Updater Version";
+            //this.newVersionButton.UseVisualStyleBackColor = false;
+            this.newVersionButton.Click += new System.EventHandler(this.newVersionButton_Click);
+            this.newVersionButton.Enter += new System.EventHandler(this.newVersionButton_MouseHover);
+            this.newVersionButton.Leave += new System.EventHandler(this.newVersionButton_MouseLeave);
             // 
             // buttonExit
             // 
@@ -667,7 +667,7 @@ namespace AmongUsModUpdater
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label waitingInfoForStart;
         public CustomButton.CustomButton buttonHomeInstall;
-        private CustomButton.CustomButton buttonNewVersion;
+        public CustomButton.CustomButton newVersionButton;
     }
 }
 
