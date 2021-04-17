@@ -6,9 +6,20 @@
 
 # Editor directories and files
 *.suo
-source/GuiVersion/.vs/*
+source/GuiVersion/AmongUsModUpdater/.vs/*
 *.v2
-source/GuiVersion/.vs/AmongUsModUpdater/v16/.suo
+source/GuiVersion/AmongUsModUpdater/.vs/AmongUsModUpdater/v16/.suo
 source/GuiVersion/obj/Release/net5.0-windows/AmongUsModUpdater.csprojAssemblyReference.cache
 /source/GuiVersion/bin/
+/source/GuiVersion/AmongUsModUpdater/bin/
+/source/GuiVersion/AmongUsModUpdater.AmongUsModUpdater/bin/
+/source/GuiVersion/AmongUsModUpdater.ModFunctions/bin/
+/source/GuiVersion/AmongUsModUpdater.TheOtherRoles/bin/
+/source/GuiVersion/WinForms.Logger/bin/
 /source/GuiVersion/obj/
+/source/GuiVersion/AmongUsModUpdater/obj/
+/source/GuiVersion/AmongUsModUpdater.AmongUsModUpdater/obj/
+/source/GuiVersion/AmongUsModUpdater.ModFunctions/obj/
+/source/GuiVersion/AmongUsModUpdater.TheOtherRoles/obj/
+/source/GuiVersion/WinForms.Logger/obj/
+
