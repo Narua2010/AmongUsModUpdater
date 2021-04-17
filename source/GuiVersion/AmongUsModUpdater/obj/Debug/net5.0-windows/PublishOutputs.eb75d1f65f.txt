@@ -1,8 +1,0 @@
-D:\Github\AmongUsModUpdater\source\GuiVersion\bin\Debug\net5.0-windows\publish\AmongUsModUpdater.exe
-D:\Github\AmongUsModUpdater\source\GuiVersion\bin\Debug\net5.0-windows\publish\AmongUsModUpdater.dll
-D:\Github\AmongUsModUpdater\source\GuiVersion\bin\Debug\net5.0-windows\publish\AmongUsModUpdater.deps.json
-D:\Github\AmongUsModUpdater\source\GuiVersion\bin\Debug\net5.0-windows\publish\AmongUsModUpdater.runtimeconfig.json
-D:\Github\AmongUsModUpdater\source\GuiVersion\bin\Debug\net5.0-windows\publish\AmongUsModUpdater.pdb
-D:\Github\AmongUsModUpdater\source\GuiVersion\bin\Debug\net5.0-windows\publish\Newtonsoft.Json.dll
-D:\Github\AmongUsModUpdater\source\GuiVersion\bin\Debug\net5.0-windows\publish\NLog.dll
-D:\Github\AmongUsModUpdater\source\GuiVersion\bin\Debug\net5.0-windows\publish\NLog.Windows.Forms.dll
