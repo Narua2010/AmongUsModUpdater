@@ -4440,18 +4440,6 @@
         AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="newVersionButton.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFcSURBVFhH7ZMxagJRFEXVylZXYCOkzw7S2LkCuzTW
-        WUHIatxEeiF12jTpkwUkEO+DE+YzXGFQ5/0p5sCBceb+9y4OMxmpyd3T/V8XiefjyjiJ5+PKOInn48o4
-        iefjyjiJ5+PKOInn48o4iefjyjiJ5+PKOInn48o4iefjyjiJ5+PKOInn48o4ifeLFh3bi6/wyNjboaEr
-        +V0sudSYsWLsbdHgfbHoUveM6wctuOZV3/7VttGSjfwqlnY1zmwY0x9aMpMv8ke6Is7IxpkZY/pFi5by
-        TboyzsguOZ6DFm5ll38xMluO5aLFh6LIOQ/E89HyufwsyrSNZ3PidVCBnfylUGnc2xGrh0os5CulSuPe
-        glhdVGQtPygWxvWax/VRmal8pFwY11MeDwMVig/mHet+GOdQsYeQnyPDQq/meUhSq0E3/7/AQUitBheq
-        KbUaXKim1GpwoZpSa+RKJpMTfNNOCr2DAp4AAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAUAAAAAAAEAIACcwAAAVgAAADAwAAABACAAqCUAAPLAAAAgIAAAAQAgAKgQAACa5gAAGBgAAAEA
