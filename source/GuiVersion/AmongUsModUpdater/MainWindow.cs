@@ -54,18 +54,24 @@ namespace AmongUsModUpdater
         public MainWindow()
         {
             InitializeComponent();
+            initializeMainWindow();
+        }
+
+        private async void initializeMainWindow()
+        {
+
             Logger.Log("Init", null);
 
             //Demo
             selectedMod = "The Other Roles";
 
-            menuPanels = new [] { panelHome, panelSettings, panelHelp};
+            menuPanels = new[] { panelHome, panelSettings, panelHelp };
             menuButtons = new[] { homeButton, settingsButton, helpButton };
 
             labelVersion.Text = "Among Us Mod Updater Version: " + Application.ProductVersion;
             settingsGamePathTextBox.Text = Properties.Settings.Default.GamePath;
 
-            newVersionUrl = AmongUsModUpdater.AmongUsModUpdater.checkVersionsUpdate(this).ToString();
+            newVersionUrl = await AmongUsModUpdater.AmongUsModUpdater.checkVersionsUpdate(this);
 
             if (Properties.Settings.Default.Backup == true)
             {
