@@ -41,6 +41,7 @@ namespace AmongUsModUpdater
             this.downloadProgress = new System.Windows.Forms.ProgressBar();
             this.buttonHomeStart = new CustomButton.CustomButton();
             this.panelSettings = new System.Windows.Forms.Panel();
+            this.settingsOpenFolder = new CustomButton.CustomButton();
             this.buttonWorkerCancel = new System.Windows.Forms.Button();
             this.labelProcessedDrives = new System.Windows.Forms.Label();
             this.progressBarSearch = new System.Windows.Forms.ProgressBar();
@@ -82,10 +83,10 @@ namespace AmongUsModUpdater
             this.homeButton.FlatAppearance.BorderSize = 0;
             this.homeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.homeButton.ForeColor = System.Drawing.Color.White;
-            this.homeButton.Location = new System.Drawing.Point(0, 60);
-            this.homeButton.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.homeButton.Location = new System.Drawing.Point(0, 100);
+            this.homeButton.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.homeButton.Name = "homeButton";
-            this.homeButton.Size = new System.Drawing.Size(158, 75);
+            this.homeButton.Size = new System.Drawing.Size(226, 125);
             this.homeButton.TabIndex = 5;
             this.homeButton.Text = "Home";
             this.homeButton.UseVisualStyleBackColor = true;
@@ -96,10 +97,10 @@ namespace AmongUsModUpdater
             this.settingsButton.FlatAppearance.BorderSize = 0;
             this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.settingsButton.ForeColor = System.Drawing.Color.White;
-            this.settingsButton.Location = new System.Drawing.Point(0, 135);
-            this.settingsButton.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.settingsButton.Location = new System.Drawing.Point(0, 225);
+            this.settingsButton.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(158, 75);
+            this.settingsButton.Size = new System.Drawing.Size(226, 125);
             this.settingsButton.TabIndex = 6;
             this.settingsButton.Text = "Settings";
             this.settingsButton.UseVisualStyleBackColor = true;
@@ -110,10 +111,10 @@ namespace AmongUsModUpdater
             this.helpButton.FlatAppearance.BorderSize = 0;
             this.helpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.helpButton.ForeColor = System.Drawing.Color.White;
-            this.helpButton.Location = new System.Drawing.Point(0, 210);
-            this.helpButton.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.helpButton.Location = new System.Drawing.Point(0, 350);
+            this.helpButton.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.helpButton.Name = "helpButton";
-            this.helpButton.Size = new System.Drawing.Size(158, 75);
+            this.helpButton.Size = new System.Drawing.Size(226, 125);
             this.helpButton.TabIndex = 7;
             this.helpButton.Text = "Help";
             this.helpButton.UseVisualStyleBackColor = true;
@@ -127,9 +128,10 @@ namespace AmongUsModUpdater
             this.panelHome.Controls.Add(this.otherRolesBanner);
             this.panelHome.Controls.Add(this.downloadProgress);
             this.panelHome.Controls.Add(this.buttonHomeStart);
-            this.panelHome.Location = new System.Drawing.Point(172, 60);
+            this.panelHome.Location = new System.Drawing.Point(246, 100);
+            this.panelHome.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelHome.Name = "panelHome";
-            this.panelHome.Size = new System.Drawing.Size(528, 372);
+            this.panelHome.Size = new System.Drawing.Size(754, 620);
             this.panelHome.TabIndex = 8;
             this.panelHome.Visible = false;
             this.panelHome.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseDown);
@@ -145,11 +147,10 @@ namespace AmongUsModUpdater
             this.buttonHomeInstall.ForeColor = System.Drawing.Color.White;
             this.buttonHomeInstall.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
             this.buttonHomeInstall.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
-            this.buttonHomeInstall.Location = new System.Drawing.Point(176, 102);
-            this.buttonHomeInstall.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonHomeInstall.Location = new System.Drawing.Point(251, 170);
             this.buttonHomeInstall.Name = "buttonHomeInstall";
             this.buttonHomeInstall.Radius = 10;
-            this.buttonHomeInstall.Size = new System.Drawing.Size(176, 72);
+            this.buttonHomeInstall.Size = new System.Drawing.Size(251, 120);
             this.buttonHomeInstall.Stroke = false;
             this.buttonHomeInstall.StrokeColor = System.Drawing.Color.Gray;
             this.buttonHomeInstall.TabIndex = 9;
@@ -161,10 +162,9 @@ namespace AmongUsModUpdater
             // waitingInfoForStart
             // 
             this.waitingInfoForStart.AutoSize = true;
-            this.waitingInfoForStart.Location = new System.Drawing.Point(121, 226);
-            this.waitingInfoForStart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.waitingInfoForStart.Location = new System.Drawing.Point(173, 377);
             this.waitingInfoForStart.Name = "waitingInfoForStart";
-            this.waitingInfoForStart.Size = new System.Drawing.Size(276, 15);
+            this.waitingInfoForStart.Size = new System.Drawing.Size(417, 25);
             this.waitingInfoForStart.TabIndex = 8;
             this.waitingInfoForStart.Text = "It takes a little while to start Among Us. Please wait.";
             this.waitingInfoForStart.Visible = false;
@@ -179,11 +179,10 @@ namespace AmongUsModUpdater
             this.buttonHomeUpdate.ForeColor = System.Drawing.Color.White;
             this.buttonHomeUpdate.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
             this.buttonHomeUpdate.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
-            this.buttonHomeUpdate.Location = new System.Drawing.Point(176, 102);
-            this.buttonHomeUpdate.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonHomeUpdate.Location = new System.Drawing.Point(251, 170);
             this.buttonHomeUpdate.Name = "buttonHomeUpdate";
             this.buttonHomeUpdate.Radius = 10;
-            this.buttonHomeUpdate.Size = new System.Drawing.Size(176, 72);
+            this.buttonHomeUpdate.Size = new System.Drawing.Size(251, 120);
             this.buttonHomeUpdate.Stroke = false;
             this.buttonHomeUpdate.StrokeColor = System.Drawing.Color.Gray;
             this.buttonHomeUpdate.TabIndex = 5;
@@ -195,10 +194,9 @@ namespace AmongUsModUpdater
             // otherRolesBanner
             // 
             this.otherRolesBanner.Image = ((System.Drawing.Image)(resources.GetObject("otherRolesBanner.Image")));
-            this.otherRolesBanner.Location = new System.Drawing.Point(32, 0);
-            this.otherRolesBanner.Margin = new System.Windows.Forms.Padding(2);
+            this.otherRolesBanner.Location = new System.Drawing.Point(46, 0);
             this.otherRolesBanner.Name = "otherRolesBanner";
-            this.otherRolesBanner.Size = new System.Drawing.Size(470, 77);
+            this.otherRolesBanner.Size = new System.Drawing.Size(671, 128);
             this.otherRolesBanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.otherRolesBanner.TabIndex = 7;
             this.otherRolesBanner.TabStop = false;
@@ -208,10 +206,10 @@ namespace AmongUsModUpdater
             // 
             // downloadProgress
             // 
-            this.downloadProgress.Location = new System.Drawing.Point(69, 190);
-            this.downloadProgress.Margin = new System.Windows.Forms.Padding(10);
+            this.downloadProgress.Location = new System.Drawing.Point(99, 317);
+            this.downloadProgress.Margin = new System.Windows.Forms.Padding(14, 17, 14, 17);
             this.downloadProgress.Name = "downloadProgress";
-            this.downloadProgress.Size = new System.Drawing.Size(398, 23);
+            this.downloadProgress.Size = new System.Drawing.Size(569, 38);
             this.downloadProgress.TabIndex = 4;
             this.downloadProgress.Visible = false;
             // 
@@ -225,11 +223,10 @@ namespace AmongUsModUpdater
             this.buttonHomeStart.ForeColor = System.Drawing.Color.White;
             this.buttonHomeStart.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
             this.buttonHomeStart.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
-            this.buttonHomeStart.Location = new System.Drawing.Point(176, 103);
-            this.buttonHomeStart.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonHomeStart.Location = new System.Drawing.Point(251, 172);
             this.buttonHomeStart.Name = "buttonHomeStart";
             this.buttonHomeStart.Radius = 10;
-            this.buttonHomeStart.Size = new System.Drawing.Size(176, 71);
+            this.buttonHomeStart.Size = new System.Drawing.Size(251, 118);
             this.buttonHomeStart.Stroke = false;
             this.buttonHomeStart.StrokeColor = System.Drawing.Color.Gray;
             this.buttonHomeStart.TabIndex = 6;
@@ -240,6 +237,7 @@ namespace AmongUsModUpdater
             // 
             // panelSettings
             // 
+            this.panelSettings.Controls.Add(this.settingsOpenFolder);
             this.panelSettings.Controls.Add(this.buttonWorkerCancel);
             this.panelSettings.Controls.Add(this.labelProcessedDrives);
             this.panelSettings.Controls.Add(this.progressBarSearch);
@@ -250,23 +248,44 @@ namespace AmongUsModUpdater
             this.panelSettings.Controls.Add(this.settingsToggleBackup);
             this.panelSettings.Controls.Add(this.settingsGamePathTextBox);
             this.panelSettings.Controls.Add(this.labelSettingsPath);
-            this.panelSettings.Location = new System.Drawing.Point(172, 60);
+            this.panelSettings.Location = new System.Drawing.Point(246, 100);
+            this.panelSettings.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelSettings.Name = "panelSettings";
-            this.panelSettings.Size = new System.Drawing.Size(528, 372);
+            this.panelSettings.Size = new System.Drawing.Size(754, 620);
             this.panelSettings.TabIndex = 9;
             this.panelSettings.Visible = false;
             this.panelSettings.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseDown);
             this.panelSettings.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseMove);
+            // 
+            // settingsOpenFolder
+            // 
+            this.settingsOpenFolder.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(68)))));
+            this.settingsOpenFolder.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(68)))));
+            this.settingsOpenFolder.BackColor = System.Drawing.Color.Transparent;
+            this.settingsOpenFolder.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.settingsOpenFolder.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.settingsOpenFolder.ForeColor = System.Drawing.Color.White;
+            this.settingsOpenFolder.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
+            this.settingsOpenFolder.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
+            this.settingsOpenFolder.Location = new System.Drawing.Point(543, 182);
+            this.settingsOpenFolder.Name = "settingsOpenFolder";
+            this.settingsOpenFolder.Radius = 10;
+            this.settingsOpenFolder.Size = new System.Drawing.Size(199, 48);
+            this.settingsOpenFolder.Stroke = false;
+            this.settingsOpenFolder.StrokeColor = System.Drawing.Color.Gray;
+            this.settingsOpenFolder.TabIndex = 12;
+            this.settingsOpenFolder.Text = "Open directory";
+            this.settingsOpenFolder.Transparency = false;
+            this.settingsOpenFolder.Click += new System.EventHandler(this.settingsOpenFolder_Click);
             // 
             // buttonWorkerCancel
             // 
             this.buttonWorkerCancel.FlatAppearance.BorderSize = 0;
             this.buttonWorkerCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonWorkerCancel.ForeColor = System.Drawing.Color.Silver;
-            this.buttonWorkerCancel.Location = new System.Drawing.Point(386, 226);
-            this.buttonWorkerCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonWorkerCancel.Location = new System.Drawing.Point(551, 377);
             this.buttonWorkerCancel.Name = "buttonWorkerCancel";
-            this.buttonWorkerCancel.Size = new System.Drawing.Size(27, 23);
+            this.buttonWorkerCancel.Size = new System.Drawing.Size(39, 38);
             this.buttonWorkerCancel.TabIndex = 11;
             this.buttonWorkerCancel.Text = "X";
             this.buttonWorkerCancel.UseVisualStyleBackColor = true;
@@ -276,18 +295,20 @@ namespace AmongUsModUpdater
             // labelProcessedDrives
             // 
             this.labelProcessedDrives.AutoSize = true;
-            this.labelProcessedDrives.Location = new System.Drawing.Point(32, 252);
+            this.labelProcessedDrives.Location = new System.Drawing.Point(46, 420);
+            this.labelProcessedDrives.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelProcessedDrives.Name = "labelProcessedDrives";
-            this.labelProcessedDrives.Size = new System.Drawing.Size(95, 15);
+            this.labelProcessedDrives.Size = new System.Drawing.Size(146, 25);
             this.labelProcessedDrives.TabIndex = 9;
             this.labelProcessedDrives.Text = "Processed Drives";
             this.labelProcessedDrives.Visible = false;
             // 
             // progressBarSearch
             // 
-            this.progressBarSearch.Location = new System.Drawing.Point(32, 226);
+            this.progressBarSearch.Location = new System.Drawing.Point(46, 377);
+            this.progressBarSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.progressBarSearch.Name = "progressBarSearch";
-            this.progressBarSearch.Size = new System.Drawing.Size(349, 23);
+            this.progressBarSearch.Size = new System.Drawing.Size(499, 38);
             this.progressBarSearch.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBarSearch.TabIndex = 8;
             this.progressBarSearch.Visible = false;
@@ -302,11 +323,10 @@ namespace AmongUsModUpdater
             this.settingsButtonAutomated.ForeColor = System.Drawing.Color.White;
             this.settingsButtonAutomated.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
             this.settingsButtonAutomated.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
-            this.settingsButtonAutomated.Location = new System.Drawing.Point(214, 109);
-            this.settingsButtonAutomated.Margin = new System.Windows.Forms.Padding(2);
+            this.settingsButtonAutomated.Location = new System.Drawing.Point(303, 182);
             this.settingsButtonAutomated.Name = "settingsButtonAutomated";
             this.settingsButtonAutomated.Radius = 10;
-            this.settingsButtonAutomated.Size = new System.Drawing.Size(139, 29);
+            this.settingsButtonAutomated.Size = new System.Drawing.Size(199, 48);
             this.settingsButtonAutomated.Stroke = false;
             this.settingsButtonAutomated.StrokeColor = System.Drawing.Color.Gray;
             this.settingsButtonAutomated.TabIndex = 7;
@@ -324,11 +344,10 @@ namespace AmongUsModUpdater
             this.settingButtonManual.ForeColor = System.Drawing.Color.White;
             this.settingButtonManual.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
             this.settingButtonManual.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
-            this.settingButtonManual.Location = new System.Drawing.Point(34, 109);
-            this.settingButtonManual.Margin = new System.Windows.Forms.Padding(2);
+            this.settingButtonManual.Location = new System.Drawing.Point(49, 182);
             this.settingButtonManual.Name = "settingButtonManual";
             this.settingButtonManual.Radius = 10;
-            this.settingButtonManual.Size = new System.Drawing.Size(139, 29);
+            this.settingButtonManual.Size = new System.Drawing.Size(199, 48);
             this.settingButtonManual.Stroke = false;
             this.settingButtonManual.StrokeColor = System.Drawing.Color.Gray;
             this.settingButtonManual.TabIndex = 6;
@@ -340,20 +359,18 @@ namespace AmongUsModUpdater
             // 
             this.labelSettingsHeader.AutoSize = true;
             this.labelSettingsHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelSettingsHeader.Location = new System.Drawing.Point(32, 28);
-            this.labelSettingsHeader.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelSettingsHeader.Location = new System.Drawing.Point(46, 47);
             this.labelSettingsHeader.Name = "labelSettingsHeader";
-            this.labelSettingsHeader.Size = new System.Drawing.Size(178, 19);
+            this.labelSettingsHeader.Size = new System.Drawing.Size(252, 28);
             this.labelSettingsHeader.TabIndex = 5;
             this.labelSettingsHeader.Text = "Among Us Game Settings";
             // 
             // labelSettingsBackup
             // 
             this.labelSettingsBackup.AutoSize = true;
-            this.labelSettingsBackup.Location = new System.Drawing.Point(32, 165);
-            this.labelSettingsBackup.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelSettingsBackup.Location = new System.Drawing.Point(46, 275);
             this.labelSettingsBackup.Name = "labelSettingsBackup";
-            this.labelSettingsBackup.Size = new System.Drawing.Size(212, 15);
+            this.labelSettingsBackup.Size = new System.Drawing.Size(324, 25);
             this.labelSettingsBackup.TabIndex = 4;
             this.labelSettingsBackup.Text = "Should a copy of the game be created?";
             // 
@@ -363,14 +380,13 @@ namespace AmongUsModUpdater
             this.settingsToggleBackup.Cursor = System.Windows.Forms.Cursors.Hand;
             this.settingsToggleBackup.ForeColor = System.Drawing.Color.White;
             this.settingsToggleBackup.IsOn = false;
-            this.settingsToggleBackup.Location = new System.Drawing.Point(32, 190);
-            this.settingsToggleBackup.Margin = new System.Windows.Forms.Padding(2);
+            this.settingsToggleBackup.Location = new System.Drawing.Point(46, 317);
             this.settingsToggleBackup.Name = "settingsToggleBackup";
             this.settingsToggleBackup.OffColor = System.Drawing.Color.DarkGray;
             this.settingsToggleBackup.OffText = "";
             this.settingsToggleBackup.OnColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
             this.settingsToggleBackup.OnText = "";
-            this.settingsToggleBackup.Size = new System.Drawing.Size(34, 19);
+            this.settingsToggleBackup.Size = new System.Drawing.Size(60, 32);
             this.settingsToggleBackup.TabIndex = 3;
             this.settingsToggleBackup.Text = "customToggle1";
             this.settingsToggleBackup.TextEnabled = true;
@@ -383,20 +399,18 @@ namespace AmongUsModUpdater
             this.settingsGamePathTextBox.Enabled = false;
             this.settingsGamePathTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.settingsGamePathTextBox.ForeColor = System.Drawing.Color.DimGray;
-            this.settingsGamePathTextBox.Location = new System.Drawing.Point(32, 69);
-            this.settingsGamePathTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.settingsGamePathTextBox.Location = new System.Drawing.Point(46, 115);
             this.settingsGamePathTextBox.Name = "settingsGamePathTextBox";
-            this.settingsGamePathTextBox.Size = new System.Drawing.Size(321, 30);
+            this.settingsGamePathTextBox.Size = new System.Drawing.Size(696, 50);
             this.settingsGamePathTextBox.TabIndex = 2;
             this.settingsGamePathTextBox.TextChanged += new System.EventHandler(this.settingsGamePathTextBox_TextChanged);
             // 
             // labelSettingsPath
             // 
             this.labelSettingsPath.AutoSize = true;
-            this.labelSettingsPath.Location = new System.Drawing.Point(32, 52);
-            this.labelSettingsPath.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelSettingsPath.Location = new System.Drawing.Point(46, 87);
             this.labelSettingsPath.Name = "labelSettingsPath";
-            this.labelSettingsPath.Size = new System.Drawing.Size(305, 15);
+            this.labelSettingsPath.Size = new System.Drawing.Size(459, 25);
             this.labelSettingsPath.TabIndex = 1;
             this.labelSettingsPath.Text = "Please specify the folder where Among Us.exe is located.";
             // 
@@ -409,9 +423,10 @@ namespace AmongUsModUpdater
             this.panelHelp.Controls.Add(this.labelResourcesHeader);
             this.panelHelp.Controls.Add(this.labelVersionHeader);
             this.panelHelp.Controls.Add(this.labelVersion);
-            this.panelHelp.Location = new System.Drawing.Point(172, 60);
+            this.panelHelp.Location = new System.Drawing.Point(246, 100);
+            this.panelHelp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelHelp.Name = "panelHelp";
-            this.panelHelp.Size = new System.Drawing.Size(528, 372);
+            this.panelHelp.Size = new System.Drawing.Size(754, 620);
             this.panelHelp.TabIndex = 10;
             this.panelHelp.Visible = false;
             this.panelHelp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseDown);
@@ -421,10 +436,9 @@ namespace AmongUsModUpdater
             // 
             this.labelCopyright.AutoSize = true;
             this.labelCopyright.ForeColor = System.Drawing.Color.Silver;
-            this.labelCopyright.Location = new System.Drawing.Point(32, 150);
-            this.labelCopyright.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelCopyright.Location = new System.Drawing.Point(46, 250);
             this.labelCopyright.Name = "labelCopyright";
-            this.labelCopyright.Size = new System.Drawing.Size(78, 15);
+            this.labelCopyright.Size = new System.Drawing.Size(117, 25);
             this.labelCopyright.TabIndex = 6;
             this.labelCopyright.Text = "Jolle && Narua";
             // 
@@ -432,10 +446,9 @@ namespace AmongUsModUpdater
             // 
             this.labelCopyrightHeader.AutoSize = true;
             this.labelCopyrightHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelCopyrightHeader.Location = new System.Drawing.Point(32, 133);
-            this.labelCopyrightHeader.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelCopyrightHeader.Location = new System.Drawing.Point(46, 222);
             this.labelCopyrightHeader.Name = "labelCopyrightHeader";
-            this.labelCopyrightHeader.Size = new System.Drawing.Size(76, 19);
+            this.labelCopyrightHeader.Size = new System.Drawing.Size(105, 28);
             this.labelCopyrightHeader.TabIndex = 5;
             this.labelCopyrightHeader.Text = "Copyright";
             // 
@@ -445,10 +458,9 @@ namespace AmongUsModUpdater
             this.linkLabelResourcesGit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.linkLabelResourcesGit.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabelResourcesGit.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(90)))), ((int)(((byte)(255)))));
-            this.linkLabelResourcesGit.Location = new System.Drawing.Point(84, 92);
-            this.linkLabelResourcesGit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.linkLabelResourcesGit.Location = new System.Drawing.Point(120, 153);
             this.linkLabelResourcesGit.Name = "linkLabelResourcesGit";
-            this.linkLabelResourcesGit.Size = new System.Drawing.Size(295, 15);
+            this.linkLabelResourcesGit.Size = new System.Drawing.Size(445, 25);
             this.linkLabelResourcesGit.TabIndex = 4;
             this.linkLabelResourcesGit.TabStop = true;
             this.linkLabelResourcesGit.Text = "https://github.com/Narua2010/AmongUsModUpdater";
@@ -460,10 +472,9 @@ namespace AmongUsModUpdater
             // 
             this.labelResourcesGit.AutoSize = true;
             this.labelResourcesGit.ForeColor = System.Drawing.Color.Silver;
-            this.labelResourcesGit.Location = new System.Drawing.Point(32, 92);
-            this.labelResourcesGit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelResourcesGit.Location = new System.Drawing.Point(46, 153);
             this.labelResourcesGit.Name = "labelResourcesGit";
-            this.labelResourcesGit.Size = new System.Drawing.Size(46, 15);
+            this.labelResourcesGit.Size = new System.Drawing.Size(69, 25);
             this.labelResourcesGit.TabIndex = 3;
             this.labelResourcesGit.Text = "Github:";
             // 
@@ -471,10 +482,9 @@ namespace AmongUsModUpdater
             // 
             this.labelResourcesHeader.AutoSize = true;
             this.labelResourcesHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelResourcesHeader.Location = new System.Drawing.Point(32, 75);
-            this.labelResourcesHeader.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelResourcesHeader.Location = new System.Drawing.Point(46, 125);
             this.labelResourcesHeader.Name = "labelResourcesHeader";
-            this.labelResourcesHeader.Size = new System.Drawing.Size(76, 19);
+            this.labelResourcesHeader.Size = new System.Drawing.Size(107, 28);
             this.labelResourcesHeader.TabIndex = 2;
             this.labelResourcesHeader.Text = "Resources";
             // 
@@ -482,10 +492,9 @@ namespace AmongUsModUpdater
             // 
             this.labelVersionHeader.AutoSize = true;
             this.labelVersionHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelVersionHeader.Location = new System.Drawing.Point(32, 20);
-            this.labelVersionHeader.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelVersionHeader.Location = new System.Drawing.Point(46, 33);
             this.labelVersionHeader.Name = "labelVersionHeader";
-            this.labelVersionHeader.Size = new System.Drawing.Size(141, 19);
+            this.labelVersionHeader.Size = new System.Drawing.Size(201, 28);
             this.labelVersionHeader.TabIndex = 1;
             this.labelVersionHeader.Text = "Version Information";
             // 
@@ -493,10 +502,9 @@ namespace AmongUsModUpdater
             // 
             this.labelVersion.AutoSize = true;
             this.labelVersion.ForeColor = System.Drawing.Color.Silver;
-            this.labelVersion.Location = new System.Drawing.Point(32, 37);
-            this.labelVersion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelVersion.Location = new System.Drawing.Point(46, 62);
             this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(216, 15);
+            this.labelVersion.Size = new System.Drawing.Size(333, 25);
             this.labelVersion.TabIndex = 0;
             this.labelVersion.Text = "Among Us Mod Updater Version: 0.0.0.0";
             // 
@@ -508,9 +516,8 @@ namespace AmongUsModUpdater
             this.panelMenu.Controls.Add(this.helpButton);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
-            this.panelMenu.Margin = new System.Windows.Forms.Padding(2);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(158, 332);
+            this.panelMenu.Size = new System.Drawing.Size(226, 553);
             this.panelMenu.TabIndex = 9;
             this.panelMenu.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseDown);
             this.panelMenu.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseMove);
@@ -520,9 +527,9 @@ namespace AmongUsModUpdater
             this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
             this.panelLogo.Controls.Add(this.Logo);
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.panelLogo.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(158, 60);
+            this.panelLogo.Size = new System.Drawing.Size(226, 100);
             this.panelLogo.TabIndex = 0;
             this.panelLogo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseDown);
             this.panelLogo.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseMove);
@@ -530,10 +537,9 @@ namespace AmongUsModUpdater
             // Logo
             // 
             this.Logo.Image = ((System.Drawing.Image)(resources.GetObject("Logo.Image")));
-            this.Logo.Location = new System.Drawing.Point(47, 0);
-            this.Logo.Margin = new System.Windows.Forms.Padding(2);
+            this.Logo.Location = new System.Drawing.Point(67, 0);
             this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(68, 60);
+            this.Logo.Size = new System.Drawing.Size(97, 100);
             this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Logo.TabIndex = 0;
             this.Logo.TabStop = false;
@@ -546,24 +552,33 @@ namespace AmongUsModUpdater
             this.panelTop.Controls.Add(this.newVersionButton);
             this.panelTop.Controls.Add(this.buttonExit);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTop.Location = new System.Drawing.Point(158, 0);
-            this.panelTop.Margin = new System.Windows.Forms.Padding(2);
+            this.panelTop.Location = new System.Drawing.Point(226, 0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(542, 60);
+            this.panelTop.Size = new System.Drawing.Size(774, 100);
             this.panelTop.TabIndex = 10;
             this.panelTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseDown);
             this.panelTop.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseMove);
             // 
             // newVersionButton
             // 
+            this.newVersionButton.Active1 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(68)))));
+            this.newVersionButton.Active2 = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(151)))), ((int)(((byte)(68)))));
             this.newVersionButton.BackColor = System.Drawing.Color.Transparent;
+            this.newVersionButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.newVersionButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.newVersionButton.ForeColor = System.Drawing.Color.White;
-            this.newVersionButton.Location = new System.Drawing.Point(361, 7);
+            this.newVersionButton.Inactive1 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
+            this.newVersionButton.Inactive2 = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
+            this.newVersionButton.Location = new System.Drawing.Point(516, 12);
+            this.newVersionButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.newVersionButton.Name = "newVersionButton";
-            this.newVersionButton.Size = new System.Drawing.Size(144, 23);
+            this.newVersionButton.Radius = 10;
+            this.newVersionButton.Size = new System.Drawing.Size(206, 38);
+            this.newVersionButton.Stroke = false;
+            this.newVersionButton.StrokeColor = System.Drawing.Color.Gray;
             this.newVersionButton.TabIndex = 11;
             this.newVersionButton.Text = "New Updater Version";
-            //this.newVersionButton.UseVisualStyleBackColor = false;
+            this.newVersionButton.Transparency = false;
             this.newVersionButton.Click += new System.EventHandler(this.newVersionButton_Click);
             this.newVersionButton.Enter += new System.EventHandler(this.newVersionButton_MouseHover);
             this.newVersionButton.Leave += new System.EventHandler(this.newVersionButton_MouseLeave);
@@ -573,10 +588,9 @@ namespace AmongUsModUpdater
             this.buttonExit.FlatAppearance.BorderSize = 0;
             this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExit.ForeColor = System.Drawing.Color.Silver;
-            this.buttonExit.Location = new System.Drawing.Point(507, 7);
-            this.buttonExit.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonExit.Location = new System.Drawing.Point(724, 12);
             this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(28, 24);
+            this.buttonExit.Size = new System.Drawing.Size(40, 40);
             this.buttonExit.TabIndex = 10;
             this.buttonExit.Text = "X";
             this.buttonExit.UseVisualStyleBackColor = true;
@@ -585,19 +599,18 @@ namespace AmongUsModUpdater
             // panelMenuActive
             // 
             this.panelMenuActive.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(72)))), ((int)(((byte)(33)))));
-            this.panelMenuActive.Location = new System.Drawing.Point(158, 60);
-            this.panelMenuActive.Margin = new System.Windows.Forms.Padding(2);
+            this.panelMenuActive.Location = new System.Drawing.Point(226, 100);
             this.panelMenuActive.Name = "panelMenuActive";
-            this.panelMenuActive.Size = new System.Drawing.Size(7, 75);
+            this.panelMenuActive.Size = new System.Drawing.Size(10, 125);
             this.panelMenuActive.TabIndex = 11;
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(700, 332);
+            this.ClientSize = new System.Drawing.Size(1000, 553);
             this.Controls.Add(this.panelMenuActive);
             this.Controls.Add(this.panelTop);
             this.Controls.Add(this.panelMenu);
@@ -608,7 +621,6 @@ namespace AmongUsModUpdater
             this.ForeColor = System.Drawing.Color.Silver;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Among Us Mod Updater";
@@ -668,6 +680,7 @@ namespace AmongUsModUpdater
         public System.Windows.Forms.Label waitingInfoForStart;
         public CustomButton.CustomButton buttonHomeInstall;
         public CustomButton.CustomButton newVersionButton;
+        public CustomButton.CustomButton settingsOpenFolder;
     }
 }
 

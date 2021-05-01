@@ -188,7 +188,7 @@ namespace AmongUsModUpdater
                 switch (selectedMod)
                 {
                     case "The Other Roles":
-                        TheOtherRoles.TheOtherRoles.updateTheOtherRoles(this);
+                        TheOtherRoles.TheOtherRoles.updateTheOtherRoles(this, Properties.Settings.Default.GamePath);
                         break;
                 }
             }
@@ -292,6 +292,18 @@ namespace AmongUsModUpdater
         private void linkLabelResourcesGit_MouseLeave(object sender, EventArgs e)
         {
             linkLabelResourcesGit.LinkColor = Color.FromArgb(0, 90, 255);
+        }
+
+        private void settingsOpenFolder_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.GamePath))
+            {
+                Process.Start("explorer.exe", Properties.Settings.Default.GamePath);
+            }
+            else
+            {
+                MessageBoxFunctions.openMessageBox("No game path was specified. Please add it in the settings.", "Error");
+            }
         }
     }
 }

@@ -54,29 +54,38 @@ namespace AmongUsModUpdater.TheOtherRoles
                 mainWindow.buttonHomeUpdate.Visible = true;
             }
         }
-        public static async void installTheOtherRoles(dynamic mainWindow, string gamePath)
+        public static async void installTheOtherRoles(dynamic mainWindow, string rootPath)
         {
-            Properties.Settings.Default.ReleaseId = currentReleaseId;
-            string _gamePath = gamePath + "\\The Other Roles";
-            Directory.CreateDirectory(_gamePath);
-            Properties.Settings.Default.GamePath = _gamePath;
-
-            await SystemFunctions.copyFolder(gamePath, _gamePath);
-
-            Properties.Settings.Default.Save();
-
-            mainWindow.downloadProgress.Visible = true;
-
-            updateTheOtherRoles(mainWindow);
+            mainWindow.buttonHomeInstall.Enabled = false;
+            if (deleteOldVersionInRoot(rootPath).Result)
+            {
+                string gamePath = rootPath + "\\The Other Roles";
+                Properties.Settings.Default.GamePath = gamePath;
+                Properties.Settings.Default.Save();
+                updateTheOtherRoles(mainWindow, rootPath);
+            }
         }
 
-        public static async void updateTheOtherRoles(dynamic mainWindow)
+        public static async void updateTheOtherRoles(dynamic mainWindow, string rootPath)
         {
-            string zipPath = Properties.Settings.Default.GamePath + "\\" + releaseName + ".zip";
-            await ModFunctions.downloadNewVersion(downloadUrl, zipPath, mainWindow);
-
-            if (deleteOldFiles().Result)
+            mainWindow.buttonHomeUpdate.Enabled = false;
+            if (deleteOldFiles(rootPath).Result)
             {
+                //Create Mod Folder
+                Properties.Settings.Default.ReleaseId = currentReleaseId;
+                Properties.Settings.Default.Save();
+                string gamePath = Properties.Settings.Default.GamePath;
+                Directory.CreateDirectory(gamePath);
+
+                await SystemFunctions.copyFolder(rootPath, gamePath);
+
+                mainWindow.downloadProgress.Visible = true;
+
+
+                //Download Mod
+                string zipPath = Properties.Settings.Default.GamePath + "\\" + releaseName + ".zip";
+                await ModFunctions.downloadNewVersion(downloadUrl, zipPath, mainWindow);
+
                 ZipFile.ExtractToDirectory(zipPath, Properties.Settings.Default.GamePath);
 
                 if (!Directory.Exists(Properties.Settings.Default.GamePath + "\\BepInex\\config"))
@@ -107,37 +116,51 @@ namespace AmongUsModUpdater.TheOtherRoles
                 mainWindow.buttonHomeStart.Visible = true;
                 mainWindow.downloadProgress.Visible = false;
 
+                if (File.Exists(rootPath + "\\me.eisbison.theotherroles.cfg")) File.Delete(rootPath + "\\me.eisbison.theotherroles.cfg");
                 if (File.Exists(Properties.Settings.Default.GamePath + "\\me.eisbison.theotherroles.cfg")) File.Delete(Properties.Settings.Default.GamePath + "\\me.eisbison.theotherroles.cfg");
                 if (File.Exists(Properties.Settings.Default.GamePath + "\\" + releaseName + ".zip")) File.Delete(Properties.Settings.Default.GamePath + "\\" + releaseName + ".zip");
+
+                mainWindow.buttonHomeInstall.Enabled = true;
+                mainWindow.buttonHomeUpdate.Enabled = true;
 
                 DialogResult messageBoxResponse = MessageBoxFunctions.openMessageBoxWithResponse("The mod has been successfully updated. Would you like to start the game now?", "Update finished");
 
                 if (messageBoxResponse == DialogResult.Yes)
                 {
-                    ModFunctions.startGame(Properties.Settings.Default.GamePath, checkInstallation(), mainWindow);
+                    startTheOtherRoles(mainWindow);
                 }
             }
         }
 
         public static void startTheOtherRoles(dynamic mainWindow)
         {
+            mainWindow.buttonHomeStart.Enabled = false;
             ModFunctions.startGame(Properties.Settings.Default.GamePath, checkInstallation(), mainWindow);
         }
-        public static async Task<bool> deleteOldFiles()
-        {
-            string path = Properties.Settings.Default.GamePath;
 
-            if (File.Exists(path + "\\BepInex\\config\\me.eisbison.theotherroles.cfg"))
+        public static async Task<bool> deleteOldFiles(string rootPath)
+        {
+            string gamePath = Properties.Settings.Default.GamePath;
+
+            if (File.Exists(gamePath + "\\BepInex\\config\\me.eisbison.theotherroles.cfg"))
             {
-                File.Copy(path + "\\BepInex\\config\\me.eisbison.theotherroles.cfg", path + "\\me.eisbison.theotherroles.cfg", true);
+                File.Copy(gamePath + "\\BepInex\\config\\me.eisbison.theotherroles.cfg", rootPath + "\\me.eisbison.theotherroles.cfg", true);
                 configControll = true;
             }
 
-            if (Directory.Exists(path + "\\mono")) Directory.Delete(path + "\\mono", true);
-            if (Directory.Exists(path + "\\BepInex")) Directory.Delete(path + "\\BepInex", true);
-            if (File.Exists(path + "\\winhttp.dll")) File.Delete(path + "\\winhttp.dll");
-            if (File.Exists(path + "\\steam_appid.txt")) File.Delete(path + "\\steam_appid.txt");
-            if (File.Exists(path + "\\doorstop_config.ini")) File.Delete(path + "\\doorstop_config.ini");
+            if (Directory.Exists(gamePath)) Directory.Delete(gamePath, true);
+
+            return true;
+        }
+
+        public static async Task<bool> deleteOldVersionInRoot(string gamePath)
+        {
+            if(Directory.Exists(gamePath + "\\mono")) Directory.Delete(gamePath + "\\mono", true);
+            if (Directory.Exists(gamePath + "\\BepInex")) Directory.Delete(gamePath + "\\BepInex", true);
+            if (Directory.Exists(gamePath + "\\TheOtherHats")) Directory.Delete(gamePath + "\\TheOtherHats", true);
+            if (File.Exists(gamePath + "\\winhttp.dll")) File.Delete(gamePath + "\\winhttp.dll");
+            if (File.Exists(gamePath + "\\steam_appid.txt")) File.Delete(gamePath + "\\steam_appid.txt");
+            if (File.Exists(gamePath + "\\doorstop_config.ini")) File.Delete(gamePath + "\\doorstop_config.ini");
 
             return true;
         }
@@ -145,7 +168,7 @@ namespace AmongUsModUpdater.TheOtherRoles
         {
             string path = Properties.Settings.Default.GamePath;
 
-            if (!Directory.Exists(path) && (!Directory.Exists(path + "\\mono") || !Directory.Exists(path + "\\BepInex") || !File.Exists(path + "\\winhttp.dll") || !File.Exists(path + "\\steam_appid.txt") || !File.Exists(path + "\\doorstop_config.ini"))) return false;
+            if (!Directory.Exists(path) && (!Directory.Exists(path + "\\mono") || !Directory.Exists(path + "\\BepInex") || !Directory.Exists(path + "\\TheOtherHats") || !File.Exists(path + "\\winhttp.dll") || !File.Exists(path + "\\steam_appid.txt") || !File.Exists(path + "\\doorstop_config.ini"))) return false;
 
             return true;
         }

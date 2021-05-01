@@ -48,7 +48,7 @@ namespace AmongUsModUpdater.UpdaterFunctions
                     BackgroundWorker workerStart = new BackgroundWorker();
                     workerStart.DoWork += new DoWorkEventHandler(backgroundWorkerStart_DoWork);
                     workerStart.RunWorkerCompleted += new RunWorkerCompletedEventHandler(backgroundWorkerStart_RunComplete);
-                    workerStart.RunWorkerAsync(gamePath);
+                    workerStart.RunWorkerAsync(_gamePath);
                     mainWindow.downloadProgress.Value = 0;
                     mainWindow.waitingInfoForStart.Visible = true;
                 }
@@ -120,6 +120,7 @@ namespace AmongUsModUpdater.UpdaterFunctions
         public static void backgroundWorkerStart_RunComplete(object sender, RunWorkerCompletedEventArgs ex)
         {
             _mainWindow.waitingInfoForStart.Visible = false;
+            _mainWindow.buttonHomeStart.Enabled = true;
         }
     }
 }
