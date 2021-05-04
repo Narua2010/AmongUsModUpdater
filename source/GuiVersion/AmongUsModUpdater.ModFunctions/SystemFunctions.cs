@@ -12,6 +12,7 @@ namespace AmongUsModUpdater.UpdaterFunctions
     public class SystemFunctions
     {
         private static AutomatedSearch automatedSearch;
+        private static QuickSearch quickSearch;
 
         public static void switchPanelVisibility(int y, Panel[] menuPanels, Button[] menuButtons, Panel panelMenuActive)
         {
@@ -46,6 +47,15 @@ namespace AmongUsModUpdater.UpdaterFunctions
         public static void cancelAutomatedSearch()
         {
             automatedSearch.cancelAsyncWorker();
+        }
+        public static void startQuickSearch(dynamic mainWindow)
+        {
+            quickSearch = new QuickSearch(mainWindow);
+            quickSearch.startAsyncWorker();
+        }
+        public static void cancelQuickSearch()
+        {
+            quickSearch.cancelAsyncWorker();
         }
         public static async Task<bool> copyFolder(string sourceFolder, string destFolder)
         {
