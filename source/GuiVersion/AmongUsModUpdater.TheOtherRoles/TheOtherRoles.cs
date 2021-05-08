@@ -31,10 +31,16 @@ namespace AmongUsModUpdater.TheOtherRoles
             Properties.Settings.Default.Save();
 #endif
             dynamic json = await ModFunctions.getModData(projectApi);
-            downloadUrl = json.assets[0].browser_download_url;
+            foreach(var value in json.assets)
+            {
+                if(value.content_type == "application/x-zip-compressed")
+                {
+                    downloadUrl = value.browser_download_url;
+                    currentReleaseId = value.id.ToString();
+                }
+            }
             releaseName = json.name;
-            currentReleaseId = json.assets[0].id.ToString();
-
+            
             if (string.IsNullOrWhiteSpace(Properties.Settings.Default.ReleaseId))
             {
                 mainWindow.buttonHomeInstall.Visible = true;

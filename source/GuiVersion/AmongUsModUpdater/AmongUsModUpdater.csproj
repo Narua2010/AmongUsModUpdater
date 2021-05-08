@@ -5,15 +5,15 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>installer.ico</ApplicationIcon>
-    <AssemblyVersion>2.2.0.0</AssemblyVersion>
-    <Version>2.2.0</Version>
+    <AssemblyVersion>2.2.2.0</AssemblyVersion>
+    <Version>2.2.2</Version>
     <Authors>Jolle &amp; Narua</Authors>
     <Copyright>Jolle &amp; Narua</Copyright>
     <PackageIcon>Logo.png</PackageIcon>
     <RepositoryUrl>https://github.com/Narua2010/AmongUsModUpdater</RepositoryUrl>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile />
-    <FileVersion>2.2.1.14</FileVersion>
+    <FileVersion>2.2.2.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

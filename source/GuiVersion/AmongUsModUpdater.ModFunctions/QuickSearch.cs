@@ -95,7 +95,6 @@ namespace AmongUsModUpdater.UpdaterFunctions
                         if (Directory.GetFiles(path, @"Among Us.exe", options).Any())
                             ex.Result = path;
                 }
-                ex.Result = path;
             }
             catch (Exception e)
             {
