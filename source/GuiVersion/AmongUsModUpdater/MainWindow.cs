@@ -46,6 +46,10 @@ namespace AmongUsModUpdater
         {
             get { return settingsButtonAutomated; }
         }
+        public CustomButton.CustomButton SettingsButtonQuickSearch
+        {
+            get { return settingsButtonQuickSearch; }
+        }
         public CustomTextBox.CustomTextBox SettingsGamePathTextBox
         {
             get { return settingsGamePathTextBox; }
@@ -256,6 +260,7 @@ namespace AmongUsModUpdater
         private void cancelAsyncButton_Click(System.Object sender, System.EventArgs e)
         {
             SystemFunctions.cancelAutomatedSearch();
+            SystemFunctions.cancelQuickSearch();
 
             this.buttonWorkerCancel.Enabled = false;
         }
@@ -303,6 +308,16 @@ namespace AmongUsModUpdater
             else
             {
                 MessageBoxFunctions.openMessageBox("No game path was specified. Please add it in the settings.", "Error");
+            }
+        }
+
+        private void settingsButtonQuickSearch_Click(object sender, EventArgs e)
+        {
+            DialogResult response = MessageBoxFunctions.openMessageBoxWithResponse("This automatic search only works if you've installed Among Us using Steam. If you didn't install the game using Steam, try using the Automated search", "Attention");
+
+            if (response == DialogResult.Yes)
+            {
+                SystemFunctions.startQuickSearch(this);
             }
         }
     }
